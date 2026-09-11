@@ -1,0 +1,238 @@
+{
+  "generator": "Built-in image_gen",
+  "assets": [
+    {
+      "name": "01-hero-dark",
+      "prompt": "Create ONE polished image asset for the future LOOKi showcase website, not a website mockup, no collage, no text, no watermark. Art direction: extremely minimal, futuristic liquid glass, premium photographic realism, physically convincing refraction and caustics, midnight navy #031D3B, subtle turquoise #00C9A0, icy white, disciplined composition, elegant studio lighting, subtle realistic material imperfections, no neon cyberpunk clutter. The supplied brand identity has round eyeglass-shaped double o's and a small turquoise audio signal; use these ideas only as subtle conceptual inspiration, do not invent product claims. Landscape 16:9 hero background. A single monumental transparent liquid-glass ribbon folds into two softly connected round loops on the right half, resting over an almost-black navy polished plane. Tiny turquoise light refracts along its bottom edge. Left 55 percent remains smooth dark negative space for future HTML title. Close luxury optical campaign, tangible glass, controlled reflections.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-fcaf89c3-02b7-42f0-a931-44fe7aa2bbf9.png",
+      "file": "01-hero-dark.png",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "name": "02-hero-light",
+      "prompt": "Create ONE polished image asset for the future LOOKi showcase website, not a website mockup, no collage, no text, no watermark. Art direction: extremely minimal, futuristic liquid glass, premium photographic realism, physically convincing refraction and caustics, midnight navy #031D3B, subtle turquoise #00C9A0, icy white, disciplined composition, elegant studio lighting, subtle realistic material imperfections, no neon cyberpunk clutter. The supplied brand identity has round eyeglass-shaped double o's and a small turquoise audio signal; use these ideas only as subtle conceptual inspiration, do not invent product claims. Landscape 16:9 hero background. Two overlapping thick optical glass discs hovering very slightly above a matte icy-white surface on the right side, subtle mint caustics and precise soft contact shadows. Empty left half for future website copy. High key luxury optical photography.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-62b1544e-c23e-4886-b5c1-0cc591deb753.png",
+      "file": "02-hero-light.png",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "name": "03-liquid-wave",
+      "prompt": "Create ONE polished image asset for the future LOOKi showcase website, not a website mockup, no collage, no text, no watermark. Art direction: extremely minimal, futuristic liquid glass, premium photographic realism, physically convincing refraction and caustics, midnight navy #031D3B, subtle turquoise #00C9A0, icy white, disciplined composition, elegant studio lighting, subtle realistic material imperfections, no neon cyberpunk clutter. The supplied brand identity has round eyeglass-shaped double o's and a small turquoise audio signal; use these ideas only as subtle conceptual inspiration, do not invent product claims. Landscape 16:9 abstract section background. One smooth clear molten-glass wave crossing the lower third, its very fine rim catching turquoise light, deep midnight navy background fading into ample calm dark space above. Macro product-photo realism, no splashes.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-ca0944ad-f680-4c59-b263-f10fe78460b3.png",
+      "file": "03-liquid-wave.png",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "name": "04-glass-orbit",
+      "prompt": "Create ONE polished image asset for the future LOOKi showcase website, not a website mockup, no collage, no text, no watermark. Art direction: extremely minimal, futuristic liquid glass, premium photographic realism, physically convincing refraction and caustics, midnight navy #031D3B, subtle turquoise #00C9A0, icy white, disciplined composition, elegant studio lighting, subtle realistic material imperfections, no neon cyberpunk clutter. The supplied brand identity has round eyeglass-shaped double o's and a small turquoise audio signal; use these ideas only as subtle conceptual inspiration, do not invent product claims. Square 1:1 sculptural feature image. A thick perfectly crafted clear glass torus tilted diagonally, one small turquoise glass sphere suspended in its opening, hovering above a navy surface, exquisite ray traced optical detail and restrained studio rim lighting.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-e92ebae3-4eb7-4b53-ab55-330dacbc7778.png",
+      "file": "04-glass-orbit.png",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "name": "05-optical-macro",
+      "prompt": "Create ONE polished image asset for the future LOOKi showcase website, not a website mockup, no collage, no text, no watermark. Art direction: extremely minimal, futuristic liquid glass, premium photographic realism, physically convincing refraction and caustics, midnight navy #031D3B, subtle turquoise #00C9A0, icy white, disciplined composition, elegant studio lighting, subtle realistic material imperfections, no neon cyberpunk clutter. The supplied brand identity has round eyeglass-shaped double o's and a small turquoise audio signal; use these ideas only as subtle conceptual inspiration, do not invent product claims. Landscape 4:3 photorealistic extreme macro of the curved edge of a premium optical glass lens, subtle dark navy metal rim, minute glass reflections, turquoise spectral highlight, very shallow photographic depth of field. Abstract enough to avoid representing a specific real product.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-2ae226c4-e4d1-4694-abec-e91d9fc0c79a.png",
+      "file": "05-optical-macro.png",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "name": "06-frosted-glass",
+      "prompt": "Create ONE polished image asset for the future LOOKi showcase website, not a website mockup, no collage, no text, no watermark. Art direction: extremely minimal, futuristic liquid glass, premium photographic realism, physically convincing refraction and caustics, midnight navy #031D3B, subtle turquoise #00C9A0, icy white, disciplined composition, elegant studio lighting, subtle realistic material imperfections, no neon cyberpunk clutter. The supplied brand identity has round eyeglass-shaped double o's and a small turquoise audio signal; use these ideas only as subtle conceptual inspiration, do not invent product claims. Landscape 16:9 usable background texture. Close photographic study of one gently curved sheet of translucent frosted glass with a razor-thin polished clear edge at the far right, diffused white and pale mint light behind it. Smooth central area suitable for later UI overlays.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-1362e161-a560-4057-8fdd-77496e99682e.png",
+      "file": "06-frosted-glass.png",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "name": "07-signal-sculpture",
+      "prompt": "Create ONE polished image asset for the future LOOKi showcase website, not a website mockup, no collage, no text, no watermark. Art direction: extremely minimal, futuristic liquid glass, premium photographic realism, physically convincing refraction and caustics, midnight navy #031D3B, subtle turquoise #00C9A0, icy white, disciplined composition, elegant studio lighting, subtle realistic material imperfections, no neon cyberpunk clutter. The supplied brand identity has round eyeglass-shaped double o's and a small turquoise audio signal; use these ideas only as subtle conceptual inspiration, do not invent product claims. Square 1:1 feature visual. Four freestanding rounded optical glass bars increasing in height and one tiny glass sphere arranged like a minimal audio signal, dark navy studio surface, subtle turquoise light held inside lower glass edges, luxurious physical sculpture, realistic shadows.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-f6b2bc6b-194c-4c77-909e-6bb118c15133.png",
+      "file": "07-signal-sculpture.png",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "name": "08-double-loop",
+      "prompt": "Create ONE polished image asset for the future LOOKi showcase website, not a website mockup, no collage, no text, no watermark. Art direction: extremely minimal, futuristic liquid glass, premium photographic realism, physically convincing refraction and caustics, midnight navy #031D3B, subtle turquoise #00C9A0, icy white, disciplined composition, elegant studio lighting, subtle realistic material imperfections, no neon cyberpunk clutter. The supplied brand identity has round eyeglass-shaped double o's and a small turquoise audio signal; use these ideas only as subtle conceptual inspiration, do not invent product claims. Square 1:1 feature visual. Two joined circular clear-glass rings resembling an abstract pair of round eyeglass lenses, on an off-white plinth. Refined turquoise caustic on the ground, frontal three-quarter camera, photographically convincing geometry, generous margins.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-298552a4-7caa-4a40-bee3-83e97bab0422.png",
+      "file": "08-double-loop.png",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "name": "09-droplet",
+      "prompt": "Create ONE polished image asset for the future LOOKi showcase website, not a website mockup, no collage, no text, no watermark. Art direction: extremely minimal, futuristic liquid glass, premium photographic realism, physically convincing refraction and caustics, midnight navy #031D3B, subtle turquoise #00C9A0, icy white, disciplined composition, elegant studio lighting, subtle realistic material imperfections, no neon cyberpunk clutter. The supplied brand identity has round eyeglass-shaped double o's and a small turquoise audio signal; use these ideas only as subtle conceptual inspiration, do not invent product claims. Square 1:1 macro asset. One perfectly clear asymmetrical liquid glass droplet on a deep navy satin surface, reflecting a soft white studio strip and a faint mint accent, ultra-realistic surface tension, enormous quiet negative space.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-5860e215-83b3-471d-b37b-871ed1d42115.png",
+      "file": "09-droplet.png",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "name": "10-glass-ribbon",
+      "prompt": "Create ONE polished image asset for the future LOOKi showcase website, not a website mockup, no collage, no text, no watermark. Art direction: extremely minimal, futuristic liquid glass, premium photographic realism, physically convincing refraction and caustics, midnight navy #031D3B, subtle turquoise #00C9A0, icy white, disciplined composition, elegant studio lighting, subtle realistic material imperfections, no neon cyberpunk clutter. The supplied brand identity has round eyeglass-shaped double o's and a small turquoise audio signal; use these ideas only as subtle conceptual inspiration, do not invent product claims. Portrait 2:3 section illustration. Single flowing transparent glass ribbon like a soft S curve, suspended in pale grey white studio air, optical refraction and faint turquoise edge, refined premium minimal installation photography.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-d27c2ee5-9b2f-44ce-bdaa-28f1d67565d5.png",
+      "file": "10-glass-ribbon.png",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "name": "11-caustics-dark",
+      "prompt": "Create ONE polished image asset for the future LOOKi showcase website, not a website mockup, no collage, no text, no watermark. Art direction: extremely minimal, futuristic liquid glass, premium photographic realism, physically convincing refraction and caustics, midnight navy #031D3B, subtle turquoise #00C9A0, icy white, disciplined composition, elegant studio lighting, subtle realistic material imperfections, no neon cyberpunk clutter. The supplied brand identity has round eyeglass-shaped double o's and a small turquoise audio signal; use these ideas only as subtle conceptual inspiration, do not invent product claims. Landscape 16:9 background. Photorealistic delicate turquoise optical caustics cast by an unseen curved glass onto deep midnight navy matte ground, gentle concentrated patterns near the lower right corner and mostly calm navy negative space. No visible objects.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-1ffb67b9-0af2-440c-9643-0e3302904304.png",
+      "file": "11-caustics-dark.png",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "name": "12-caustics-light",
+      "prompt": "Create ONE polished image asset for the future LOOKi showcase website, not a website mockup, no collage, no text, no watermark. Art direction: extremely minimal, futuristic liquid glass, premium photographic realism, physically convincing refraction and caustics, midnight navy #031D3B, subtle turquoise #00C9A0, icy white, disciplined composition, elegant studio lighting, subtle realistic material imperfections, no neon cyberpunk clutter. The supplied brand identity has round eyeglass-shaped double o's and a small turquoise audio signal; use these ideas only as subtle conceptual inspiration, do not invent product claims. Landscape 16:9 background. Sunlight refracted through curved optical glass outside the frame casts sparse delicate pale mint caustics across a warm icy-white plaster wall. Minimal, tactile high-end architecture photography, very calm.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-f0c4d88b-1165-4a5d-beb6-485b0d416df9.png",
+      "file": "12-caustics-light.png",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "name": "13-concept-glasses-dark",
+      "prompt": "Create ONE polished image asset for the future LOOKi showcase website, not a website mockup, no collage, no text, no watermark. Art direction: extremely minimal, futuristic liquid glass, premium photographic realism, physically convincing refraction and caustics, midnight navy #031D3B, subtle turquoise #00C9A0, icy white, disciplined composition, elegant studio lighting, subtle realistic material imperfections, no neon cyberpunk clutter. The supplied brand identity has round eyeglass-shaped double o's and a small turquoise audio signal; use these ideas only as subtle conceptual inspiration, do not invent product claims. Landscape 4:3 product concept photography. An imagined elegant pair of round eyeglasses inspired by LOOKi's eyeglass-shaped logo, thin midnight-navy frame, optically clear lenses, a tiny restrained turquoise detail on the temple, no logos or text. Rest on a dark reflective slab, premium studio lighting. Plausible eyewear design, no futuristic HUD, no invented hardware functions.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-0b3a2ce3-6392-4011-8ea6-b87b8ad394a7.png",
+      "file": "13-concept-glasses-dark.png",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "name": "14-concept-glasses-light",
+      "prompt": "Create ONE polished image asset for the future LOOKi showcase website, not a website mockup, no collage, no text, no watermark. Art direction: extremely minimal, futuristic liquid glass, premium photographic realism, physically convincing refraction and caustics, midnight navy #031D3B, subtle turquoise #00C9A0, icy white, disciplined composition, elegant studio lighting, subtle realistic material imperfections, no neon cyberpunk clutter. The supplied brand identity has round eyeglass-shaped double o's and a small turquoise audio signal; use these ideas only as subtle conceptual inspiration, do not invent product claims. Landscape 4:3 product concept photography. Imagined minimal round eyeglasses, thin midnight navy metal frame, clear lenses and tiny mint temple detail, clean white studio still life on a softly rounded milky glass pedestal. Elegant real-life construction, honest photographic material detail, no lettering or UI.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-3e3eae58-5e62-44e1-af4f-6a4b07728211.png",
+      "file": "14-concept-glasses-light.png",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "name": "15-concept-glasses-folded",
+      "prompt": "Create ONE polished image asset for the future LOOKi showcase website, not a website mockup, no collage, no text, no watermark. Art direction: extremely minimal, futuristic liquid glass, premium photographic realism, physically convincing refraction and caustics, midnight navy #031D3B, subtle turquoise #00C9A0, icy white, disciplined composition, elegant studio lighting, subtle realistic material imperfections, no neon cyberpunk clutter. The supplied brand identity has round eyeglass-shaped double o's and a small turquoise audio signal; use these ideas only as subtle conceptual inspiration, do not invent product claims. Square 1:1 product concept still life. A folded pair of imagined round navy eyeglasses placed diagonally on a frosted glass tile, icy-white desk, soft morning sunlight, turquoise caustic reflected near tile edge. Close overhead luxury editorial photograph, no logos or claims.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-77933808-84af-463f-8d49-d41b8f6fc244.png",
+      "file": "15-concept-glasses-folded.png",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "name": "19-glass-architecture",
+      "prompt": "Create ONE polished image asset for the future LOOKi showcase website, not a website mockup, no collage, no text, no watermark. Art direction: extremely minimal, futuristic liquid glass, premium photographic realism, physically convincing refraction and caustics, midnight navy #031D3B, subtle turquoise #00C9A0, icy white, disciplined composition, elegant studio lighting, subtle realistic material imperfections, no neon cyberpunk clutter. The supplied brand identity has round eyeglass-shaped double o's and a small turquoise audio signal; use these ideas only as subtle conceptual inspiration, do not invent product claims. Landscape 16:9 cinematic architectural photograph. Empty extremely minimal futuristic gallery with a single flowing curved clear-glass wall, pale microcement floor, softly rounded architecture and gentle turquoise refraction, natural diffuse daylight, tranquil human-scale believable space, broad negative space, no people or text.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-10272478-ac16-433f-a169-aadd006cea17.png",
+      "file": "19-glass-architecture.png",
+      "width": 1672,
+      "height": 940
+    },
+    {
+      "name": "20-footer-horizon",
+      "prompt": "Create ONE polished image asset for the future LOOKi showcase website, not a website mockup, no collage, no text, no watermark. Art direction: extremely minimal, futuristic liquid glass, premium photographic realism, physically convincing refraction and caustics, midnight navy #031D3B, subtle turquoise #00C9A0, icy white, disciplined composition, elegant studio lighting, subtle realistic material imperfections, no neon cyberpunk clutter. The supplied brand identity has round eyeglass-shaped double o's and a small turquoise audio signal; use these ideas only as subtle conceptual inspiration, do not invent product claims. Landscape 16:9 footer background. Almost black midnight navy horizon with a very low smooth liquid-glass dome emerging at the bottom center, one impossibly fine but physically rendered pale turquoise edge light, large upper 75 percent negative space, minimal luxurious photographic material study.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-780f85b5-8a98-4c2d-af16-ff8a15b95b1a.png",
+      "file": "20-footer-horizon.png",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "name": "21-looki-mobilite-urbaine",
+      "label": "Mobilité urbaine",
+      "category": "humain",
+      "caption": "Déplacement quotidien avec lunettes connectées et canne blanche.",
+      "prompt": "Use case: photorealistic-natural. Create ONE ultra-realistic premium editorial campaign photograph for LOOKi, an assistive connected glasses project for blind and low-vision adults. Based on project briefs: contextual audio assistance during urban mobility, eye-level camera, smartphone processing, progressive autonomy training with rehabilitation professionals, professional follow-up. This is a visual concept, not a verified product design or claim of performance. Consistent wearable design across campaign: understated midnight navy almost-black acetate glasses with softly rounded rectangular lenses, modestly thicker connected temples, one tiny flush circular forward-facing camera near the outer upper frame corner, a minuscule turquoise accent on the temple, normal transparent or subtly grey lenses. No giant technology, no exposed circuit boards, no holographic overlays or screens in lenses, no visible sound waves, no invented brand lettering. Show authentic capable adults with low vision with ordinary natural-looking eyes, human agency, warm candid expressions, no pity or miracle narrative. White mobility cane in walking scenes complements the glasses. Photographic skin pores, believable anatomy, realistic garment weave, natural documentary light with refined luxury art direction. Palette: pale stone, navy clothing, subtle teal environmental accents. No text or watermark, no collage, no UI mockup. Wide 16:9 website hero photograph, medium-full-body adult woman around 35 with short dark hair and navy jacket walking independently along a broad level Parisian pedestrian sidewalk, NOT crossing a road. Her right hand holds a real white mobility cane angled forward with tip touching the ground; other hand relaxed, smartphone stays in pocket. Wearing the specified connected glasses with small camera visible. Calm focused expression. Contemporary pale stone facade and soft glass reflections, morning side light. Subject in right third, generous clean defocused architecture in left third for future copy; wide enough to see cane tip and natural walking posture.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-6abda761-1793-40aa-934a-6b212b0c3934.png",
+      "file": "21-looki-mobilite-urbaine.png",
+      "width": 1672,
+      "height": 941,
+      "references": [
+        "cadrage_iot.pptx.pdf, pages 1–2",
+        "Slides Business Case V2.pptx.pdf, pages 3, 37–38"
+      ]
+    },
+    {
+      "name": "22-looki-reperage-entree",
+      "label": "Se repérer",
+      "category": "humain",
+      "caption": "Repérage d’une entrée et attention portée au retour vocal.",
+      "prompt": "Use case: photorealistic-natural. Create ONE ultra-realistic premium editorial campaign photograph for LOOKi, an assistive connected glasses project for blind and low-vision adults. Based on project briefs: contextual audio assistance during urban mobility, eye-level camera, smartphone processing, progressive autonomy training with rehabilitation professionals, professional follow-up. This is a visual concept, not a verified product design or claim of performance. Consistent wearable design across campaign: understated midnight navy almost-black acetate glasses with softly rounded rectangular lenses, modestly thicker connected temples, one tiny flush circular forward-facing camera near the outer upper frame corner, a minuscule turquoise accent on the temple, normal transparent or subtly grey lenses. No giant technology, no exposed circuit boards, no holographic overlays or screens in lenses, no visible sound waves, no invented brand lettering. Show authentic capable adults with low vision with ordinary natural-looking eyes, human agency, warm candid expressions, no pity or miracle narrative. White mobility cane in walking scenes complements the glasses. Photographic skin pores, believable anatomy, realistic garment weave, natural documentary light with refined luxury art direction. Palette: pale stone, navy clothing, subtle teal environmental accents. No text or watermark, no collage, no UI mockup. Landscape 4:3 natural editorial photograph. A middle-aged Black man with low vision stands still on a level pedestrian plaza near a modern public building's accessible glass entrance. Wears specified navy connected glasses; camera and discreet thick temple clearly visible in three-quarter profile. Holds a white mobility cane with its tip on ground, free hand relaxed. Head slightly turned, quietly attentive to an audio cue, lips relaxed, no hand touching glasses, no headphones. Door several meters ahead, no signage text. Cool daylight, realistic urban scene, moderate depth of field, subject is main focus.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-8ac97beb-e74d-42db-83a7-91feca57363a.png",
+      "file": "22-looki-reperage-entree.png",
+      "width": 1448,
+      "height": 1086,
+      "references": [
+        "cadrage_iot.pptx.pdf, pages 1–2",
+        "Slides Business Case V2.pptx.pdf, pages 3, 37–38"
+      ]
+    },
+    {
+      "name": "23-looki-parcours-accompagne",
+      "label": "Parcours accompagné",
+      "category": "humain",
+      "caption": "Apprentissage du déplacement avec un instructeur en locomotion.",
+      "prompt": "Use case: photorealistic-natural. Create ONE ultra-realistic premium editorial campaign photograph for LOOKi, an assistive connected glasses project for blind and low-vision adults. Based on project briefs: contextual audio assistance during urban mobility, eye-level camera, smartphone processing, progressive autonomy training with rehabilitation professionals, professional follow-up. This is a visual concept, not a verified product design or claim of performance. Consistent wearable design across campaign: understated midnight navy almost-black acetate glasses with softly rounded rectangular lenses, modestly thicker connected temples, one tiny flush circular forward-facing camera near the outer upper frame corner, a minuscule turquoise accent on the temple, normal transparent or subtly grey lenses. No giant technology, no exposed circuit boards, no holographic overlays or screens in lenses, no visible sound waves, no invented brand lettering. Show authentic capable adults with low vision with ordinary natural-looking eyes, human agency, warm candid expressions, no pity or miracle narrative. White mobility cane in walking scenes complements the glasses. Photographic skin pores, believable anatomy, realistic garment weave, natural documentary light with refined luxury art direction. Palette: pale stone, navy clothing, subtle teal environmental accents. No text or watermark, no collage, no UI mockup. Wide 16:9 documentary campaign photograph. Low-vision man around 50 wearing specified navy connected glasses, practicing mobility along a wide pedestrian walkway with a female orientation-and-mobility instructor walking nearby half a step behind without grabbing him. He holds and uses a white mobility cane whose tip is ahead on pavement. A waist-high planter encroaches on one side of walkway several meters ahead leaving ample clear passage. Both still safely well away from obstacle, no traffic and no imminent danger. Quiet concentrated faces, human interaction and agency, elegant pale architecture, late afternoon diffuse daylight. Show both full bodies and cane completely, premium authentic photography rather than stock pose.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-094c98e1-5372-41b1-a071-a63c3bc7857a.png",
+      "file": "23-looki-parcours-accompagne.png",
+      "width": 1672,
+      "height": 941,
+      "references": [
+        "cadrage_iot.pptx.pdf, pages 1–2",
+        "Slides Business Case V2.pptx.pdf, pages 3, 37–38"
+      ]
+    },
+    {
+      "name": "24-looki-prise-en-main",
+      "label": "Prise en main",
+      "category": "humain",
+      "caption": "Découverte des lunettes avec une professionnelle de la basse vision.",
+      "prompt": "Use case: photorealistic-natural. Create ONE ultra-realistic premium editorial campaign photograph for LOOKi, an assistive connected glasses project for blind and low-vision adults. Based on project briefs: contextual audio assistance during urban mobility, eye-level camera, smartphone processing, progressive autonomy training with rehabilitation professionals, professional follow-up. This is a visual concept, not a verified product design or claim of performance. Consistent wearable design across campaign: understated midnight navy almost-black acetate glasses with softly rounded rectangular lenses, modestly thicker connected temples, one tiny flush circular forward-facing camera near the outer upper frame corner, a minuscule turquoise accent on the temple, normal transparent or subtly grey lenses. No giant technology, no exposed circuit boards, no holographic overlays or screens in lenses, no visible sound waves, no invented brand lettering. Show authentic capable adults with low vision with ordinary natural-looking eyes, human agency, warm candid expressions, no pity or miracle narrative. White mobility cane in walking scenes complements the glasses. Photographic skin pores, believable anatomy, realistic garment weave, natural documentary light with refined luxury art direction. Palette: pale stone, navy clothing, subtle teal environmental accents. No text or watermark, no collage, no UI mockup. Landscape 4:3 editorial photograph in a welcoming modern low-vision rehabilitation room with frosted glass and off-white walls. Adult low-vision woman around 60 with silver hair seated, comfortably wearing specified navy connected camera glasses, smiling subtly as a younger female occupational therapist seated at equal eye level explains their use with a simple open-hand gesture, not touching patient's face. Folded white mobility cane on table beside her; smartphone rests screen down on table. Glasses camera visible. Natural window light, realistic wrinkles, ordinary tasteful clothes, no white lab coats, no medical machinery, no screens visible. Respectful collaborative mood and personal autonomy.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-12ac9478-8cd9-426f-af98-55e157dcb511.png",
+      "file": "24-looki-prise-en-main.png",
+      "width": 1448,
+      "height": 1086,
+      "references": [
+        "cadrage_iot.pptx.pdf, pages 1–2",
+        "Slides Business Case V2.pptx.pdf, pages 3, 37–38"
+      ]
+    },
+    {
+      "name": "25-looki-suivi-centre",
+      "label": "Continuité du suivi",
+      "category": "humain",
+      "caption": "Échange au centre pour adapter l’accompagnement aux sorties du quotidien.",
+      "prompt": "Use case: photorealistic-natural. Create ONE ultra-realistic premium editorial campaign photograph for LOOKi, an assistive connected glasses project for blind and low-vision adults. Based on project briefs: contextual audio assistance during urban mobility, eye-level camera, smartphone processing, progressive autonomy training with rehabilitation professionals, professional follow-up. This is a visual concept, not a verified product design or claim of performance. Consistent wearable design across campaign: understated midnight navy almost-black acetate glasses with softly rounded rectangular lenses, modestly thicker connected temples, one tiny flush circular forward-facing camera near the outer upper frame corner, a minuscule turquoise accent on the temple, normal transparent or subtly grey lenses. No giant technology, no exposed circuit boards, no holographic overlays or screens in lenses, no visible sound waves, no invented brand lettering. Show authentic capable adults with low vision with ordinary natural-looking eyes, human agency, warm candid expressions, no pity or miracle narrative. White mobility cane in walking scenes complements the glasses. Photographic skin pores, believable anatomy, realistic garment weave, natural documentary light with refined luxury art direction. Palette: pale stone, navy clothing, subtle teal environmental accents. No text or watermark, no collage, no UI mockup. Wide 16:9 editorial photograph. In a modern light rehabilitation consultation space, low-vision young adult man wearing specified navy connected glasses sits across from an occupational therapist, actively talking and gesturing naturally during a follow-up after an outdoor route. Folded white mobility cane beside him. Therapist listens while one hand rests beside an open laptop angled so only its back is visible to camera; no UI or fake metrics displayed. Patient is the primary focus, professional is secondary, faces warm and candid, no medical exam, no posed handshake. Minimal furniture, pale walls, a single translucent turquoise glass divider far in background, realistic natural side lighting.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-73172c0b-06ea-48f4-ad10-fa201fb8940b.png",
+      "file": "25-looki-suivi-centre.png",
+      "width": 1672,
+      "height": 941,
+      "references": [
+        "cadrage_iot.pptx.pdf, pages 1–2",
+        "Slides Business Case V2.pptx.pdf, pages 3, 37–38"
+      ]
+    },
+    {
+      "name": "26-logo-liquid-glass",
+      "file": "26-logo-liquid-glass.png",
+      "category": "logo",
+      "label": "Logo Looki · Liquid glass",
+      "caption": "Interprétation du logo original en verre bleu nuit et turquoise.",
+      "prompt": "Use case: style-transfer. Input image is the user's original LOOKi logo, the exact identity reference and edit target. Create ONE ultra-premium photorealistic liquid-glass material rendition of THIS SAME LOGO for a modern futuristic showcase website. Preserve the exact wordmark geometry, spelling Looki, capital L, lowercase k and i, two circular o letters forming connected round eyeglasses with bridge and small outer tabs, i dot, and the original small turquoise dot plus three rounded ascending signal bars inside the right lens. Do not add/remove letters or turn logo into another symbol. Keep original proportions and front-facing readable silhouette. Transform navy logo strokes into thick translucent midnight-blue optical glass with precise polished edges, bright controlled icy-white edge reflections, exquisite physically realistic refractions and subtle turquoise caustics. Signal remains clearly turquoise inside right o. Entire logo floats very slightly above a seamless deep midnight navy surface, premium quiet studio lighting; frontal camera with very subtle depth visible, no severe perspective, generous margin around complete centered logo. Landscape 16:9. Logo takes 70 percent of image width. Cinematic restrained light for strong readable contrast, refined liquid-glass visual language consistent with the site's navy/icy-white/turquoise assets. No extra words, no slogan, no UI, no people, no decoration clutter, no watermark. This is a branded campaign image, not a new logo design.",
+      "source": "/Users/hamza/.codex/generated_images/01a08da1-58f4-7ed3-96c0-1018c1ae2609/exec-7ae2d593-928f-4463-9add-abad0dfd41fc.png",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "name": "00-logo-original",
+      "file": "00-logo-original.png",
+      "category": "logo",
+      "label": "Logo Looki · Original",
+      "caption": "Logo fourni, conservé sans modification.",
+      "source": "/var/folders/py/3rw757b50kz11qhcc18_bfhc0000gn/T/codex-clipboard-1b65ec3e-63fb-4165-bdd2-f5e65d2321a1.png",
+      "prompt": "Logo original fourni par l’utilisateur ; copie exacte, sans génération.",
+      "width": 1448,
+      "height": 1086
+    }
+  ]
+}

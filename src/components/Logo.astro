@@ -1,0 +1,53 @@
+---
+/**
+ * Marque LOOKi, tracée en SVG d'après le logo original (00-logo-original.png).
+ * `tone="light"` pour les fonds sombres, `tone="dark"` pour les fonds clairs.
+ * Le signal turquoise reste identique dans les deux cas.
+ */
+interface Props {
+  tone?: 'light' | 'dark';
+  height?: number;
+  class?: string;
+  decorative?: boolean;
+}
+const { tone = 'light', height = 30, class: className = '', decorative = false } = Astro.props;
+const ink = tone === 'light' ? '#ffffff' : '#001840';
+const width = Math.round((height * 948) / 268);
+const id = `looki-${Math.random().toString(36).slice(2, 8)}`;
+---
+<svg
+  class={`logo ${className}`}
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="262 404 948 268"
+  width={width}
+  height={height}
+  role={decorative ? undefined : 'img'}
+  aria-hidden={decorative ? 'true' : undefined}
+  aria-labelledby={decorative ? undefined : id}
+  focusable="false"
+>
+  {!decorative && <title id={id}>Looki</title>}
+  <g fill={ink}>
+    <rect x="267" y="409" width="27" height="249" />
+    <rect x="267" y="633" width="151" height="25" />
+    <circle cx="557" cy="555" r="98.5" fill="none" stroke={ink} stroke-width="26" />
+    <circle cx="833" cy="555" r="98.5" fill="none" stroke={ink} stroke-width="26" />
+    <rect x="418" y="518" width="36" height="32" rx="6" />
+    <rect x="934" y="518" width="36" height="32" rx="6" />
+    <path d="M648 523.5 Q694 527 740 523.5" fill="none" stroke={ink} stroke-width="23" />
+    <rect x="1002" y="409" width="26" height="249" />
+    <polygon points="1111,476 1145,476 1027,594 1027,560" />
+    <polygon points="1031,548 1064,548 1151,658 1118,658" />
+    <rect x="1174" y="476" width="26" height="182" />
+    <circle cx="1186.5" cy="426.5" r="17.5" />
+  </g>
+  <g fill="#1EC28E" class="logo__signal">
+    <circle cx="825.5" cy="586" r="6" />
+    <rect x="840" y="571" width="11" height="29" rx="5.5" />
+    <rect x="861" y="557" width="11" height="51" rx="5.5" />
+    <rect x="882" y="540" width="11" height="52" rx="5.5" />
+  </g>
+</svg>
+<style>
+  .logo { display: block; flex: none; }
+</style>

@@ -1,0 +1,51 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import { formatDate, isoDate } from '@/lib/format';
+
+interface Props { entry: CollectionEntry<'communiques'>; featured?: boolean }
+const { entry, featured = false } = Astro.props;
+const { title, date, summary, image, imageAlt, pdf } = entry.data;
+const href = `/communiques-de-presse/${entry.id}/`;
+---
+<article class:list={['press-card', { 'press-card--featured': featured }]}>
+  {image && (
+    <a href={href} class="press-card__media frame" tabindex="-1" aria-hidden="true">
+      <Image src={image} alt={imageAlt ?? ''} widths={[480, 800, 1200]} sizes="(min-width: 60em) 40vw, 100vw" layout="none" loading="lazy" />
+    </a>
+  )}
+  <div class="press-card__body">
+    <p class="press-card__meta">
+      <time datetime={isoDate(date)}>{formatDate(date)}</time>
+      <span aria-hidden="true">·</span>
+      <span>Communiqué de presse</span>
+    </p>
+    <h3 class="press-card__title"><a href={href}>{title}</a></h3>
+    <p class="press-card__summary">{summary}</p>
+    <p class="press-card__links">
+      <a href={href} class="link-arrow">Lire le communiqué <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      {pdf && <a href={pdf} class="press-card__pdf" download>Télécharger le PDF</a>}
+    </p>
+  </div>
+</article>
+<style>
+  .press-card {
+    display: grid;
+    gap: 1.5rem;
+    padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+    border-top: 1px solid var(--line);
+  }
+  .press-card--featured { border-top: 0; }
+  @media (min-width: 60em) {
+    .press-card:has(.press-card__media) { grid-template-columns: 2fr 3fr; align-items: start; gap: 2.5rem; }
+  }
+  .press-card__media { display: block; aspect-ratio: 16 / 10; border-radius: var(--radius-lg); }
+  .press-card__media :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .press-card__body { display: grid; gap: 0.75rem; }
+  .press-card__meta { display: flex; flex-wrap: wrap; gap: 0.6rem; font-size: var(--text-sm); color: var(--fg-subtle); }
+  .press-card__title a { text-decoration: none; }
+  .press-card__title a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
+  .press-card__summary { color: var(--fg-muted); max-width: 60ch; }
+  .press-card__links { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; margin-top: 0.25rem; }
+  .press-card__pdf { font-weight: 600; color: var(--fg-muted); }
+</style>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="262 404 948 268" width="948" height="268" role="img" aria-labelledby="looki-title"><title id="looki-title">Looki</title>
+<g fill="#001840">
+<rect x="267" y="409" width="27" height="249"/><rect x="267" y="633" width="151" height="25"/>
+<circle cx="557" cy="555" r="98.5" fill="none" stroke="#001840" stroke-width="26"/>
+<circle cx="833" cy="555" r="98.5" fill="none" stroke="#001840" stroke-width="26"/>
+<rect x="418" y="518" width="36" height="32" rx="6"/><rect x="934" y="518" width="36" height="32" rx="6"/>
+<path d="M648 523.5 Q694 527 740 523.5" fill="none" stroke="#001840" stroke-width="23"/>
+<rect x="1002" y="409" width="26" height="249"/>
+<polygon points="1111,476 1145,476 1027,594 1027,560"/>
+<polygon points="1031,548 1064,548 1151,658 1118,658"/>
+<rect x="1174" y="476" width="26" height="182"/><circle cx="1186.5" cy="426.5" r="17.5"/>
+</g>
+<g fill="#1EC28E">
+<circle cx="825.5" cy="586" r="6"/>
+<rect x="840" y="571" width="11" height="29" rx="5.5"/><rect x="861" y="557" width="11" height="51" rx="5.5"/><rect x="882" y="540" width="11" height="52" rx="5.5"/>
+</g>
+</svg>

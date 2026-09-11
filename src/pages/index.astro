@@ -1,0 +1,647 @@
+---
+import { Image, getImage } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SplitReveal from '@/components/react/SplitReveal';
+import Lightfall from '@/components/react/Lightfall';
+import GlassTilt from '@/components/react/GlassTilt';
+import RippleDistortion from '@/components/react/RippleDistortion';
+import VoiceChip from '@/components/VoiceChip.astro';
+import PressCard from '@/components/PressCard.astro';
+import ContactForm from '@/components/ContactForm.astro';
+import { site } from '@/lib/site';
+
+import mobilite from '@/assets/images/21-looki-mobilite-urbaine.png';
+import reperage from '@/assets/images/22-looki-reperage-entree.png';
+import parcours from '@/assets/images/23-looki-parcours-accompagne.png';
+import priseEnMain from '@/assets/images/24-looki-prise-en-main.png';
+import suiviCentre from '@/assets/images/25-looki-suivi-centre.png';
+import heroGlass from '@/assets/images/01-hero-dark.png';
+import opticalMacro from '@/assets/images/05-optical-macro.png';
+import wave from '@/assets/images/03-liquid-wave.png';
+import causticsLight from '@/assets/images/12-caustics-light.png';
+import logoGlass from '@/assets/images/26-logo-liquid-glass.png';
+
+const communiques = (await getCollection('communiques', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 2);
+
+// Textures pour l'ondulation au pointeur : mêmes recadrages que les images servies.
+const heroRipple = await getImage({ src: opticalMacro, width: 1200, height: 1350, fit: 'cover', position: 'left', format: 'webp', quality: 85 });
+const logoRipple = await getImage({ src: logoGlass, width: 1600, format: 'webp', quality: 85 });
+
+const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`;
+---
+<BaseLayout title={site.name}>
+  <noscript>
+    <style>
+      .split-reveal__word { transform: none !important; opacity: 1 !important; filter: none !important; }
+    </style>
+  </noscript>
+
+  <!-- ===================================================== HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="glow" aria-hidden="true"></div>
+    <Lightfall client:idle />
+    <div class="hero__veil" aria-hidden="true"></div>
+    <div class="container hero__grid">
+      <div class="hero__text">
+        <p class="eyebrow" data-reveal>Lunettes connectées · assistance vocale · suivi professionnel</p>
+        <SplitReveal
+          client:load
+          as="h1"
+          id="hero-title"
+          lines={['Plus de repères en chemin.', 'Plus de confiance, chaque jour.']}
+          delay={120}
+          stagger={80}
+        />
+        <SplitReveal
+          client:load
+          as="p"
+          className="lead hero__lead"
+          mode="blur"
+          lines={['Des lunettes connectées pensées pour accompagner les personnes malvoyantes dans leurs déplacements, et prolonger le suivi des professionnels entre deux séances.']}
+          delay={700}
+          stagger={28}
+          duration={0.7}
+        />
+        <div class="hero__actions" data-reveal style="--reveal-delay: 900ms">
+          <a href="#contact" class="btn">Échanger sur le projet <Fragment set:html={arrow} /></a>
+          <a href="#solution" class="btn btn--ghost">Découvrir la solution</a>
+        </div>
+      </div>
+
+      <div class="hero__visual" data-reveal="scale" style="--reveal-delay: 350ms">
+        <GlassTilt client:visible amplitude={3} radius="32px">
+          <figure class="hero__figure frame">
+            <RippleDistortion client:visible src={heroRipple.src} quality="medium">
+            <Image
+              src={opticalMacro}
+              alt="Gros plan sur la tranche courbe d’un verre optique cerclé de métal bleu nuit, avec un reflet turquoise et des halos de lumière."
+              width={960}
+              height={1080}
+              fit="cover"
+              position="left"
+              widths={[480, 720, 960]}
+              sizes="(min-width: 60em) 40vw, 92vw"
+              layout="none"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            />
+            </RippleDistortion>
+          </figure>
+        </GlassTilt>
+      </div>
+    </div>
+
+    <div class="container hero__facts" data-reveal style="--reveal-delay: 1100ms">
+      <ul>
+        <li><strong>Projet en développement</strong><span>Prototype et pilotes à venir, aucune commercialisation à ce jour</span></li>
+        <li><strong>Une aide complémentaire</strong><span>Aux côtés de la canne, du chien guide et de l’accompagnement humain</span></li>
+        <li><strong>Pensé avec le terrain</strong><span>Pour les centres de rééducation et les structures médico-sociales</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================================================== LA SOLUTION -->
+  <section class="section solution" id="solution" aria-labelledby="solution-title">
+    <div class="solution__bg" aria-hidden="true">
+      <Image src={heroGlass} alt="" widths={[900, 1400, 2000]} sizes="100vw" layout="none" loading="lazy" decoding="async" />
+    </div>
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">La solution</p>
+        <h2 id="solution-title">Une boucle simple entre le terrain et le centre.</h2>
+        <p class="lead">
+          LOOKi relie trois choses qui existent déjà séparément : des lunettes, une voix, et l’accompagnement
+          des professionnels. Ensemble, elles prolongent le suivi là où il manque le plus, dehors.
+        </p>
+      </div>
+
+      <ol class="numbered steps">
+        <li class="steps__item" data-reveal>
+          <span class="num" aria-hidden="true"></span>
+          <h3>Les lunettes voient ce que vous regardez</h3>
+          <p>Une petite caméra au niveau du regard, dans une monture discrète qui ressemble à des lunettes ordinaires. Pas d’écran, pas de téléphone à tenir devant soi.</p>
+        </li>
+        <li class="steps__item" data-reveal style="--reveal-delay: 120ms">
+          <span class="num" aria-hidden="true"></span>
+          <h3>La voix donne des repères</h3>
+          <p>Le smartphone traite les images et répond par la voix : une entrée à repérer, un obstacle à hauteur du corps, une direction à confirmer. Des informations courtes, hiérarchisées, mains libres.</p>
+        </li>
+        <li class="steps__item" data-reveal style="--reveal-delay: 240ms">
+          <span class="num" aria-hidden="true"></span>
+          <h3>Le centre reste dans la boucle</h3>
+          <p>Les situations rencontrées et les usages remontent aux professionnels qui accompagnent la personne. Ils peuvent ajuster les réglages, les objectifs et les exercices au fil du temps.</p>
+        </li>
+      </ol>
+
+      <div class="solution__limits glass" data-reveal>
+        <p class="eyebrow">Ce que LOOKi n’est pas</p>
+        <p>
+          LOOKi ne restaure pas la vision et ne garantit pas une sécurité absolue. C’est une assistance complémentaire,
+          conçue comme un outil d’apprentissage progressif de l’autonomie, jamais comme un remplacement de la canne,
+          du chien guide ou des personnes qui accompagnent.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== AU QUOTIDIEN -->
+  <section class="section daily theme-light" id="quotidien" aria-labelledby="daily-title">
+    <div class="daily__bg" aria-hidden="true">
+      <Image src={causticsLight} alt="" widths={[900, 1400, 2000]} sizes="100vw" layout="none" loading="lazy" decoding="async" />
+    </div>
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Au quotidien</p>
+        <h2 id="daily-title">Des situations concrètes, pas des promesses.</h2>
+        <p class="lead">
+          La ville change tous les jours : travaux, objets déplacés, trajets inconnus. LOOKi est pensé pour ces moments
+          précis, où une information simple, au bon moment, change la manière d’avancer.
+        </p>
+      </div>
+
+      <div class="scenes">
+        <article class="split scene" data-reveal>
+          <div class="split__media">
+            <figure class="frame scene__figure scene__figure--wide">
+              <Image
+                src={mobilite}
+                alt="Une femme malvoyante marche sur un trottoir parisien bordé d’une façade en pierre claire, canne blanche devant elle."
+                widths={[640, 960, 1400]}
+                sizes="(min-width: 60em) 56vw, 92vw"
+                layout="none"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          </div>
+          <div class="split__text scene__text">
+            <p class="scene__num">Situation 01</p>
+            <h3>Se déplacer dans un environnement urbain</h3>
+            <p>
+              Sur un trajet connu ou nouveau, la canne reste la référence. LOOKi ajoute une voix qui signale ce qui
+              arrive à hauteur du corps ou du visage, et confirme la direction quand un doute s’installe.
+            </p>
+            <VoiceChip text="Panneau publicitaire à hauteur de tête, à trois mètres, sur votre gauche." />
+          </div>
+        </article>
+
+        <article class="split split--flip scene" data-reveal>
+          <div class="split__media">
+            <figure class="frame scene__figure scene__figure--standard">
+              <Image
+                src={reperage}
+                alt="Un homme malvoyant, canne blanche à la main, s’arrête sur un parvis et tourne légèrement la tête, attentif, devant l’entrée vitrée d’un bâtiment moderne."
+                widths={[640, 960, 1400]}
+                sizes="(min-width: 60em) 56vw, 92vw"
+                layout="none"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          </div>
+          <div class="split__text scene__text">
+            <p class="scene__num">Situation 02</p>
+            <h3>Trouver des repères et identifier une entrée</h3>
+            <p>
+              Un parvis, une façade vitrée, plusieurs portes : les repères manquent souvent au moment d’entrer.
+              La caméra au niveau du regard permet de décrire ce qui se trouve devant, sans sortir son téléphone.
+            </p>
+            <VoiceChip text="Porte vitrée à dix mètres, légèrement sur votre droite. Un bac à plantes avant la porte." />
+          </div>
+        </article>
+
+        <article class="split scene" data-reveal>
+          <div class="split__media">
+            <figure class="frame scene__figure scene__figure--wide">
+              <Image
+                src={parcours}
+                alt="Un homme malvoyant s’entraîne à se déplacer avec sa canne blanche le long d’une promenade, une instructrice en locomotion marchant à ses côtés, un demi-pas en retrait."
+                widths={[640, 960, 1400]}
+                sizes="(min-width: 60em) 56vw, 92vw"
+                layout="none"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          </div>
+          <div class="split__text scene__text">
+            <p class="scene__num">Situation 03</p>
+            <h3>Progresser sur un parcours accompagné</h3>
+            <p>
+              Avec un instructeur ou une instructrice en locomotion, les lunettes deviennent un support d’apprentissage :
+              on répète un trajet, on ajuste ce que la voix annonce, on gagne en autonomie à son rythme.
+            </p>
+            <VoiceChip text="Jardinière sur la droite dans cinq mètres. Passage libre à gauche." />
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== BANDEAU VERRE -->
+  <section class="wave" aria-labelledby="wave-quote">
+    <div class="wave__bg" aria-hidden="true">
+      <Image src={wave} alt="" widths={[900, 1400, 2000]} sizes="100vw" layout="none" loading="lazy" decoding="async" />
+    </div>
+    <div class="container wave__inner" data-reveal>
+      <p class="eyebrow">Le constat</p>
+      <p class="wave__quote" id="wave-quote">Les difficultés apparaissent sur le terrain. Les décisions se prennent au centre.</p>
+      <p class="wave__note">Entre deux séances, le professionnel ne voit pas le moment où la difficulté survient. LOOKi est né de cet angle mort.</p>
+    </div>
+  </section>
+
+  <!-- ===================================================== PROFESSIONNELS -->
+  <section class="section pro" id="professionnels" aria-labelledby="pro-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Pour les professionnels</p>
+        <h2 id="pro-title">Prolonger l’accompagnement entre deux séances.</h2>
+        <p class="lead">
+          Orthoptistes, ergothérapeutes, instructeurs en locomotion : LOOKi s’adresse d’abord aux équipes qui
+          accompagnent déjà, pour leur donner une vue sur ce qui se passe dehors, sans multiplier les sorties.
+        </p>
+      </div>
+
+      <div class="pro__grid">
+        <ol class="numbered pro__list">
+          <li data-reveal>
+            <span class="num" aria-hidden="true"></span>
+            <h3>Comprendre les difficultés rencontrées</h3>
+            <p>Quels lieux, quelles situations, quels moments posent problème : des éléments concrets pour remplacer un suivi encore largement déclaratif.</p>
+          </li>
+          <li data-reveal style="--reveal-delay: 100ms">
+            <span class="num" aria-hidden="true"></span>
+            <h3>Suivre les usages</h3>
+            <p>Fréquence des sorties, fonctions réellement utilisées, situations signalées : de quoi objectiver la progression sans être présent à chaque trajet.</p>
+          </li>
+          <li data-reveal style="--reveal-delay: 200ms">
+            <span class="num" aria-hidden="true"></span>
+            <h3>Personnaliser progressivement</h3>
+            <p>Un mode débutant, des annonces plus ou moins détaillées, des parcours favoris : l’accompagnement s’ajuste à chaque personne, dans le temps.</p>
+          </li>
+          <li data-reveal style="--reveal-delay: 300ms">
+            <span class="num" aria-hidden="true"></span>
+            <h3>Accompagner la prise en main</h3>
+            <p>La découverte se fait au centre, avec un professionnel formé. L’outil n’a de valeur que s’il est compris, accepté et porté volontiers.</p>
+          </li>
+        </ol>
+
+        <div class="pro__media">
+          <figure class="frame pro__figure pro__figure--a" data-reveal="scale">
+            <Image
+              src={priseEnMain}
+              alt="Dans une salle lumineuse, une femme aux cheveux argentés essaie des lunettes connectées, souriante, tandis qu’une ergothérapeute assise en face lui en explique l’usage."
+              widths={[560, 900, 1300]}
+              sizes="(min-width: 60em) 44vw, 92vw"
+              layout="none"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <figure class="frame pro__figure pro__figure--b" data-reveal="scale" style="--reveal-delay: 150ms">
+            <Image
+              src={suiviCentre}
+              alt="Un jeune homme malvoyant raconte une sortie à une ergothérapeute lors d’un rendez-vous de suivi, sa canne pliée posée à côté de lui, un ordinateur portable entre eux."
+              widths={[560, 900, 1300]}
+              sizes="(min-width: 60em) 38vw, 92vw"
+              layout="none"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        </div>
+      </div>
+
+      <div class="dash glass" data-reveal aria-labelledby="dash-title">
+        <div class="dash__head">
+          <p class="eyebrow">Tableau de bord</p>
+          <h3 id="dash-title">Un espace de suivi pour l’équipe, en cours de conception</h3>
+          <p class="muted">
+            Les données seraient consultées par les professionnels du centre, dans un cadre défini avec chaque structure
+            et avec le consentement de la personne. Protection des données et hébergement de données de santé sont
+            des chantiers prioritaires du projet.
+          </p>
+        </div>
+        <div class="dash__demo" role="img" aria-label="Aperçu illustratif d’un tableau de bord, sans données réelles : sorties de la semaine, situations signalées, parcours favoris.">
+          <p class="dash__tag">Aperçu illustratif · données fictives</p>
+          <ul class="dash__rows" aria-hidden="true">
+            <li><span>Sorties de la semaine</span><i style="--w: 62%"></i></li>
+            <li><span>Situations signalées</span><i style="--w: 28%"></i></li>
+            <li><span>Parcours favoris répétés</span><i style="--w: 45%"></i></li>
+            <li><span>Annonces ajustées</span><i style="--w: 18%"></i></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== VISION -->
+  <section class="section vision" id="vision" aria-labelledby="vision-title">
+    <div class="container">
+      <div class="vision__visual" data-reveal="scale">
+        <GlassTilt client:visible amplitude={2.5} radius="32px">
+          <figure class="frame vision__figure">
+            <RippleDistortion client:visible src={logoRipple.src} quality="medium" brushSize={180} strength={0.1}>
+            <Image
+              src={logoGlass}
+              alt="Le logo Looki interprété en verre bleu nuit poli, le signal turquoise flottant dans le verre droit des lunettes."
+              widths={[720, 1100, 1600]}
+              sizes="(min-width: 64em) 64rem, 92vw"
+              layout="none"
+              loading="lazy"
+              decoding="async"
+            />
+            </RippleDistortion>
+          </figure>
+        </GlassTilt>
+      </div>
+
+      <div class="vision__text">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Vision du projet</p>
+          <h2 id="vision-title">L’autonomie d’abord. L’humain, toujours.</h2>
+        </div>
+        <div class="vision__cols">
+          <div data-reveal>
+            <h3>Autonomie</h3>
+            <p>Retrouver des repères et la confiance de sortir seul, pour des trajets et des situations simples d’abord, puis plus larges. LOOKi se veut un outil d’apprentissage, pas une béquille technologique.</p>
+          </div>
+          <div data-reveal style="--reveal-delay: 120ms">
+            <h3>Discrétion</h3>
+            <p>Une forme de lunettes ordinaire, sans écran ni voyant, parce qu’un dispositif trop visible finit rangé dans un tiroir. La technologie doit se faire oublier.</p>
+          </div>
+          <div data-reveal style="--reveal-delay: 240ms">
+            <h3>Humain</h3>
+            <p>Les professionnels restent au cœur de l’accompagnement. LOOKi leur donne de la visibilité entre deux séances ; il ne les remplace pas, et ne remplace pas non plus la relation avec les proches.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== PRESSE -->
+  <section class="section section--tight press-teaser" id="presse" aria-labelledby="press-title">
+    <div class="container press-teaser__inner">
+      <div class="press-teaser__head" data-reveal>
+        <p class="eyebrow">Communiqués de presse</p>
+        <h2 id="press-title">Suivre les étapes du projet.</h2>
+        <p class="muted">
+          {communiques.length === 0
+            ? 'Aucun communiqué n’a encore été publié. Les annonces officielles paraîtront ici, avec un lien permanent et un dossier téléchargeable lorsqu’il existe.'
+            : 'Les dernières annonces officielles du projet LOOKi.'}
+        </p>
+        <a href="/communiques-de-presse/" class="link-arrow">Voir l’espace presse <Fragment set:html={arrow} /></a>
+      </div>
+      {communiques.length > 0 && (
+        <div class="press-teaser__list" data-reveal>
+          {communiques.map((entry) => <PressCard entry={entry} />)}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- ===================================================== CONTACT -->
+  <section class="section contact theme-light" id="contact" aria-labelledby="contact-title">
+    <div class="container contact__grid">
+      <div class="contact__text" data-reveal>
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">Vous accompagnez des personnes malvoyantes ? Parlons-en.</h2>
+        <p class="lead">
+          Nous cherchons à confronter LOOKi au terrain, avec celles et ceux qui connaissent le sujet : équipes de
+          rééducation, structures médico-sociales, associations, futurs partenaires.
+        </p>
+        <ul class="contact__who">
+          <li>Centres de rééducation et structures médico-sociales intéressés par un échange ou un pilote</li>
+          <li>Professionnels de la basse vision qui souhaitent partager leur regard</li>
+          <li>Associations, distributeurs spécialisés et partenaires</li>
+          <li>Personnes concernées et proches curieux du projet</li>
+        </ul>
+        <p class="small subtle">{site.team}</p>
+      </div>
+      <div class="contact__panel" data-reveal style="--reveal-delay: 120ms">
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ---------------------------------------------------------------- Hero */
+  .hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding-block: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 4vw, 3rem);
+    background:
+      radial-gradient(80% 60% at 70% -10%, rgba(3, 29, 59, 0.9), transparent 70%),
+      var(--navy-950);
+    color: #eef5fa;
+  }
+  .hero .glow { z-index: -1; }
+  .hero :global(.lightfall) { z-index: -1; }
+  .hero__veil {
+    position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      linear-gradient(90deg, rgba(6, 20, 38, 0.72) 0%, rgba(6, 20, 38, 0.45) 38%, rgba(6, 20, 38, 0.05) 62%),
+      linear-gradient(180deg, rgba(6, 20, 38, 0.35) 0%, transparent 25%, transparent 70%, var(--navy-950) 100%);
+  }
+  .hero__grid {
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 4rem);
+    align-items: center;
+    min-height: min(78vh, 56rem);
+  }
+  @media (min-width: 60em) {
+    .hero__grid { grid-template-columns: 7fr 5fr; gap: clamp(2rem, 6vw, 6rem); }
+  }
+  .hero__text { display: grid; gap: clamp(1.25rem, 2.5vw, 2rem); justify-items: start; }
+  .hero__text h1 { max-width: 12ch; }
+  .hero__lead { max-width: 36rem; }
+  .hero__actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+
+  .hero__visual { position: relative; }
+  .hero__figure { aspect-ratio: 8 / 9; max-width: 34rem; margin: 0; margin-inline: auto; }
+  .hero__figure :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: left center; }
+
+  .hero__facts { margin-top: clamp(3rem, 6vw, 5rem); }
+  .hero__facts ul {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: grid;
+    gap: 1.25rem 2rem;
+    border-top: 1px solid var(--line);
+    padding-top: 1.5rem;
+  }
+  @media (min-width: 48em) { .hero__facts ul { grid-template-columns: repeat(3, 1fr); } }
+  .hero__facts li { display: grid; gap: 0.25rem; font-size: var(--text-sm); color: var(--fg-muted); }
+  .hero__facts strong { color: #fff; font-family: var(--font-display); font-size: 1.05rem; letter-spacing: -0.01em; }
+
+  /* ---------------------------------------------------------------- Solution */
+  .solution {
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--navy-950);
+  }
+  .solution__bg { position: absolute; inset: 0; z-index: -2; }
+  .solution__bg :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: 100% center; opacity: 0.9; }
+  .solution::before {
+    content: '';
+    position: absolute; inset: 0; z-index: -1;
+    background:
+      linear-gradient(90deg, rgba(6, 20, 38, 0.99) 0%, rgba(6, 20, 38, 0.97) 48%, rgba(6, 20, 38, 0.72) 64%, rgba(6, 20, 38, 0.28) 82%, rgba(6, 20, 38, 0.12) 100%),
+      linear-gradient(180deg, var(--navy-950) 0%, transparent 18%, transparent 82%, var(--navy-950) 100%);
+  }
+  @media (max-width: 59.99em) {
+    .solution::before { background: linear-gradient(180deg, rgba(6, 20, 38, 0.98) 0%, rgba(6, 20, 38, 0.9) 100%); }
+  }
+  .steps { display: grid; gap: clamp(1.5rem, 3vw, 2.5rem); max-width: 40rem; }
+  .steps__item {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 0.35rem 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .steps__item .num { padding-top: 0.35rem; }
+  .steps__item h3 { grid-column: 2; }
+  .steps__item p { grid-column: 2; color: var(--fg-muted); }
+  .solution__limits {
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    max-width: 44rem;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    display: grid;
+    gap: 0.75rem;
+  }
+  .solution__limits p:last-child { color: var(--fg); }
+
+  /* ---------------------------------------------------------------- Quotidien */
+  .daily { isolation: isolate; overflow: clip; background: var(--frost); }
+  .daily__bg {
+    position: absolute; inset: 0 0 auto 0; z-index: -1;
+    height: min(60vh, 40rem);
+    opacity: 0.42;
+    mask-image: linear-gradient(180deg, #000 20%, transparent 78%);
+    -webkit-mask-image: linear-gradient(180deg, #000 20%, transparent 78%);
+  }
+  .daily__bg :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .scenes { display: grid; gap: clamp(4rem, 8vw, 7rem); }
+  .scene__figure { margin: 0; }
+  .scene__figure--wide { aspect-ratio: 16 / 9; }
+  .scene__figure--standard { aspect-ratio: 4 / 3; }
+  .scene__figure :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .scene__text { display: grid; gap: 1.1rem; justify-items: start; }
+  .scene__text p:not(.scene__num) { color: var(--fg-muted); max-width: 34rem; }
+  .scene__num { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal-ink); }
+  .scene__text :global(.voice) { margin-top: 0.5rem; }
+
+  /* ---------------------------------------------------------------- Bandeau */
+  .wave {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: grid;
+    align-items: start;
+    min-height: min(96vh, 54rem);
+    padding-block: clamp(3.5rem, 8vw, 6rem) clamp(14rem, 34vw, 24rem);
+    background: var(--navy-950);
+    color: #eef5fa;
+  }
+  .wave__bg { position: absolute; inset: 0; z-index: -2; }
+  .wave__bg :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: center bottom; }
+  .wave::before {
+    content: '';
+    position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, var(--navy-950) 0%, rgba(6, 20, 38, 0.2) 40%, transparent 70%);
+  }
+  .wave__inner { display: grid; gap: 1.25rem; max-width: 46rem; }
+  .wave__quote { text-shadow: 0 2px 24px rgba(6, 20, 38, 0.85); font-family: var(--font-display); font-size: clamp(1.75rem, 1.2rem + 2.4vw, 3.25rem); line-height: 1.08; letter-spacing: -0.025em; text-wrap: balance; }
+  .wave__note { color: var(--fg-muted); max-width: 36rem; text-shadow: 0 1px 14px rgba(6, 20, 38, 0.9); }
+
+  /* ---------------------------------------------------------------- Pro */
+  .pro { background: var(--navy-950); }
+  .pro__grid { display: grid; gap: clamp(3rem, 6vw, 5rem); align-items: start; }
+  @media (min-width: 60em) { .pro__grid { grid-template-columns: 5fr 7fr; } }
+  .pro__list { display: grid; gap: 0; }
+  .pro__list li {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 0.35rem 1rem;
+    padding-block: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .pro__list li:last-child { border-bottom: 1px solid var(--line); }
+  .pro__list .num { padding-top: 0.35rem; }
+  .pro__list h3 { grid-column: 2; font-size: 1.3rem; }
+  .pro__list p { grid-column: 2; color: var(--fg-muted); font-size: var(--text-base); }
+  .pro__media { display: grid; gap: 1.25rem; }
+  .pro__figure { margin: 0; }
+  .pro__figure--a { aspect-ratio: 4 / 3; }
+  .pro__figure--b { aspect-ratio: 16 / 9; width: 86%; margin-left: auto; margin-top: -8%; }
+  .pro__figure :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  @media (max-width: 59.99em) { .pro__figure--b { width: 100%; margin-top: 0; } }
+
+  .dash {
+    margin-top: clamp(3rem, 6vw, 5rem);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    display: grid;
+    gap: 2rem;
+  }
+  @media (min-width: 60em) { .dash { grid-template-columns: 1.1fr 1fr; align-items: center; } }
+  .dash__head { display: grid; gap: 0.85rem; }
+  .dash__demo {
+    position: relative;
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    background: rgba(4, 14, 29, 0.55);
+    border: 1px solid var(--line);
+    display: grid;
+    gap: 1.25rem;
+  }
+  .dash__tag { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-fg); }
+  .dash__rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
+  .dash__rows li { display: grid; gap: 0.4rem; font-size: var(--text-sm); color: var(--fg-muted); }
+  .dash__rows i {
+    display: block;
+    height: 10px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, var(--teal), rgba(0, 201, 160, 0.35) var(--w), rgba(255, 255, 255, 0.06) var(--w));
+  }
+
+  /* ---------------------------------------------------------------- Vision */
+  .vision { background: var(--navy-1000); }
+  .vision .container { display: grid; gap: clamp(3rem, 6vw, 5rem); }
+  .vision__figure { aspect-ratio: 16 / 9; margin: 0; }
+  .vision__figure :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .vision__text { display: grid; gap: 1rem; }
+  .vision__cols { display: grid; gap: 2rem; }
+  @media (min-width: 48em) { .vision__cols { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
+  .vision__cols > div { display: grid; gap: 0.75rem; padding-top: 1.25rem; border-top: 1px solid var(--line); align-content: start; }
+  .vision__cols h3 { font-size: 1.25rem; }
+  .vision__cols p { color: var(--fg-muted); }
+
+  /* ---------------------------------------------------------------- Presse */
+  .press-teaser { background: var(--navy-900); border-top: 1px solid var(--line); }
+  .press-teaser__inner { display: grid; gap: 2.5rem; align-items: start; }
+  @media (min-width: 60em) { .press-teaser__inner:has(.press-teaser__list) { grid-template-columns: 5fr 7fr; } }
+  .press-teaser__head { display: grid; gap: 1rem; align-content: start; justify-items: start; max-width: 40rem; }
+  .press-teaser__head h2 { font-size: clamp(1.75rem, 1.3rem + 1.8vw, 2.75rem); }
+
+  /* ---------------------------------------------------------------- Contact */
+  .contact { background: linear-gradient(180deg, var(--frost) 0%, var(--frost-2) 100%); }
+  .contact__grid { display: grid; gap: clamp(2.5rem, 5vw, 5rem); align-items: start; }
+  @media (min-width: 60em) { .contact__grid { grid-template-columns: 5fr 6fr; } }
+  .contact__text { display: grid; gap: 1.25rem; }
+  .contact__who { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.5rem; color: var(--fg-muted); }
+  .contact__who li::marker { color: var(--teal-ink); }
+  .contact__panel {
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    border-radius: var(--radius-xl);
+    background: var(--white);
+    border: 1px solid var(--line);
+    box-shadow: 0 40px 90px -50px rgba(3, 29, 59, 0.4);
+  }
+</style>

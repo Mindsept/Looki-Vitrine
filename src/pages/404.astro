@@ -1,0 +1,18 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+<BaseLayout title="Page introuvable" description="Cette page n’existe pas ou a été déplacée.">
+  <section class="section nf">
+    <div class="container container--narrow">
+      <p class="eyebrow">Erreur 404</p>
+      <h1>Cette page n’existe pas.</h1>
+      <p class="lead">Le lien est peut-être erroné ou la page a été déplacée.</p>
+      <p><a href="/" class="btn">Retour à l’accueil</a></p>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .nf { min-height: 60vh; display: grid; align-items: center; }
+  .nf .container { display: grid; gap: 1.25rem; justify-items: start; }
+  .nf h1 { font-size: var(--h2); }
+</style>

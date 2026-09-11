@@ -1,0 +1,119 @@
+---
+import { site } from '@/lib/site';
+const configured = Boolean(site.contact.endpoint);
+---
+<form
+  class="contact-form"
+  method="post"
+  action={configured ? site.contact.endpoint : undefined}
+  data-contact-form
+  data-endpoint={site.contact.endpoint}
+  aria-describedby="contact-status"
+  novalidate
+>
+  {!configured && (
+    <div class="notice" id="contact-status" role="status">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+      <p>
+        <strong>L’envoi n’est pas encore activé.</strong> Aucune adresse de réception n’a été configurée pour ce formulaire :
+        il sera relié à la messagerie de l’équipe avant la mise en ligne. Vous pouvez déjà préparer votre message ci-dessous.
+      </p>
+    </div>
+  )}
+  {configured && <p id="contact-status" class="contact-form__status" role="status" aria-live="polite"></p>}
+
+  <div class="contact-form__grid">
+    <div class="field">
+      <label for="cf-name">Votre nom</label>
+      <input id="cf-name" name="name" type="text" autocomplete="name" required />
+    </div>
+    <div class="field">
+      <label for="cf-org">Structure ou organisation</label>
+      <input id="cf-org" name="organisation" type="text" autocomplete="organization" placeholder="Centre, association, entreprise…" />
+    </div>
+    <div class="field">
+      <label for="cf-email">Adresse e-mail</label>
+      <input id="cf-email" name="email" type="email" autocomplete="email" inputmode="email" required />
+    </div>
+    <div class="field">
+      <label for="cf-role">Vous êtes</label>
+      <select id="cf-role" name="profile">
+        <option value="">Choisir…</option>
+        <option>Centre de rééducation ou structure médico-sociale</option>
+        <option>Association</option>
+        <option>Professionnel·le de la basse vision</option>
+        <option>Personne concernée ou proche</option>
+        <option>Partenaire, distributeur, mutuelle</option>
+        <option>Presse</option>
+        <option>Autre</option>
+      </select>
+    </div>
+    <div class="field field--full">
+      <label for="cf-message">Votre message</label>
+      <textarea id="cf-message" name="message" rows="5" required placeholder="Contexte, besoins, questions sur le projet…"></textarea>
+    </div>
+  </div>
+
+  <div class="contact-form__actions">
+    <button type="submit" class="btn btn--dark" disabled={!configured} aria-disabled={!configured ? 'true' : undefined}>
+      Envoyer le message
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+    <p class="small subtle">Les informations saisies servent uniquement à répondre à votre demande.</p>
+  </div>
+</form>
+
+<script>
+  // Envoi progressif : uniquement si un endpoint est configuré (sinon, rien n'est simulé).
+  const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+  const endpoint = form?.dataset.endpoint;
+  const status = document.getElementById('contact-status');
+  if (form && endpoint) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      const btn = form.querySelector<HTMLButtonElement>('button[type=submit]');
+      btn && (btn.disabled = true);
+      status && (status.textContent = 'Envoi en cours…');
+      try {
+        const res = await fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        if (!res.ok) throw new Error(String(res.status));
+        form.reset();
+        status && (status.textContent = 'Merci, votre message a bien été envoyé. Nous revenons vers vous rapidement.');
+      } catch {
+        status && (status.textContent = 'L’envoi a échoué. Merci de réessayer dans quelques instants.');
+      } finally {
+        btn && (btn.disabled = false);
+      }
+    });
+  }
+</script>
+
+<style>
+  .contact-form { display: grid; gap: 1.5rem; }
+  .contact-form__grid { display: grid; gap: 1.1rem; }
+  @media (min-width: 40em) { .contact-form__grid { grid-template-columns: 1fr 1fr; } .field--full { grid-column: 1 / -1; } }
+  .field { display: grid; gap: 0.4rem; }
+  .field label { font-weight: 700; font-size: var(--text-sm); }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 14px;
+    border: 1px solid var(--line-strong);
+    background: var(--bg-elev);
+    color: var(--fg);
+    min-height: 3.1rem;
+    transition: border-color 200ms, box-shadow 200ms;
+  }
+  .field textarea { resize: vertical; min-height: 8rem; }
+  .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 122, 97, 0.25);
+  }
+  .field input::placeholder, .field textarea::placeholder { color: var(--fg-subtle); opacity: 1; }
+  .contact-form__actions { display: grid; gap: 0.75rem; justify-items: start; }
+  .btn[disabled] { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
+  .btn[disabled]::before { display: none; }
+  .contact-form__status { font-weight: 600; color: var(--accent-fg); min-height: 1.5em; }
+</style>

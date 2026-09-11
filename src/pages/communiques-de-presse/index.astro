@@ -1,0 +1,106 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PressCard from '@/components/PressCard.astro';
+import caustics from '@/assets/images/11-caustics-dark.png';
+
+const entries = (await getCollection('communiques', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+const years = [...new Set(entries.map((e) => e.data.date.getFullYear()))];
+const byYear = years.map((y) => ({ year: y, items: entries.filter((e) => e.data.date.getFullYear() === y) }));
+---
+<BaseLayout
+  title="Communiqués de presse"
+  description="Les communiqués de presse du projet LOOKi : annonces officielles, partenariats et étapes du développement."
+>
+  <section class="press-hero">
+    <div class="press-hero__bg" aria-hidden="true">
+      <Image src={caustics} alt="" widths={[720, 1280, 1920]} sizes="100vw" layout="none" loading="eager" fetchpriority="high" />
+    </div>
+    <div class="container press-hero__inner">
+      <p class="eyebrow">Espace presse</p>
+      <h1>Communiqués de presse</h1>
+      <p class="lead measure">
+        Les annonces officielles du projet LOOKi : étapes du développement, partenariats, pilotes et résultats,
+        au fur et à mesure qu’ils sont confirmés.
+      </p>
+    </div>
+  </section>
+
+  <section class="section press-list theme-light">
+    <div class="container container--narrow">
+      {entries.length === 0 ? (
+        <div class="empty glass" data-reveal>
+          <div class="empty__mark" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2">
+              <rect x="10" y="12" width="44" height="40" rx="6" />
+              <path d="M18 24h28M18 32h28M18 40h16" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h2>Aucun communiqué publié pour le moment</h2>
+          <p class="muted">
+            Cette page accueillera les communiqués officiels de LOOKi dès la première annonce.
+            Chaque communiqué disposera d’un lien permanent, d’un résumé et, le cas échéant, d’un dossier PDF à télécharger.
+          </p>
+          <p class="muted">
+            Pour une demande presse ou un échange sur le projet, utilisez la page contact.
+          </p>
+          <a href="/#contact" class="btn btn--dark">Contacter l’équipe
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      ) : (
+        <div class="press-list__inner">
+          <p class="small subtle press-list__count">
+            {entries.length === 1 ? '1 communiqué' : `${entries.length} communiqués`}
+          </p>
+          {byYear.map(({ year, items }) => (
+            <section class="press-year" aria-labelledby={`annee-${year}`}>
+              {years.length > 1 && <h2 id={`annee-${year}`} class="press-year__title">{year}</h2>}
+              {years.length === 1 && <h2 id={`annee-${year}`} class="visually-hidden">{year}</h2>}
+              {items.map((entry, i) => <PressCard entry={entry} featured={i === 0} />)}
+            </section>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .press-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding-block: clamp(4rem, 9vw, 8rem) clamp(4rem, 8vw, 7rem);
+    background: var(--navy-950);
+    color: #eef5fa;
+  }
+  .press-hero__bg { position: absolute; inset: 0; z-index: -2; opacity: 0.85; }
+  .press-hero__bg :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: right center; }
+  .press-hero::after {
+    content: '';
+    position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(90deg, rgba(6, 20, 38, 0.92) 30%, rgba(6, 20, 38, 0.35));
+  }
+  .press-hero__inner { display: grid; gap: 1.25rem; }
+  .press-hero h1 { font-size: var(--h2); }
+
+  .press-list { background: var(--frost); }
+  .empty {
+    display: grid;
+    gap: 1rem;
+    justify-items: start;
+    padding: clamp(2rem, 5vw, 3.5rem);
+    max-width: 44rem;
+  }
+  .empty__mark { width: 3.5rem; color: var(--teal-ink); opacity: 0.9; }
+  .empty h2 { font-size: var(--h3); }
+  .empty .btn { margin-top: 0.75rem; }
+
+  .press-list__count { margin-bottom: 1rem; }
+  .press-year + .press-year { margin-top: 3rem; }
+  .press-year__title { font-size: var(--text-sm); letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-subtle); margin-bottom: 0.5rem; }
+</style>

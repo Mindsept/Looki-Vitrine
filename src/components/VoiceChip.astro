@@ -1,0 +1,13 @@
+---
+/** Exemple d'annonce vocale, clairement présenté comme une illustration. */
+interface Props { text: string; label?: string }
+const { text, label = 'Exemple d’annonce vocale — illustration, formulation en cours de conception' } = Astro.props;
+---
+<figure class="voice">
+  <span class="voice__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+  <blockquote class="voice__text"><p>« {text} »</p></blockquote>
+  <figcaption class="voice__label">{label}</figcaption>
+</figure>
+<style>
+  .voice blockquote { margin: 0; }
+</style>

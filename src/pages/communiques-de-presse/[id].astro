@@ -1,0 +1,123 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image, getImage } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { formatDate, isoDate } from '@/lib/format';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('communiques', ({ data }) => !data.draft);
+  return entries.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, date, summary, image, imageAlt, pdf, location } = entry.data;
+const permalink = new URL(`/communiques-de-presse/${entry.id}/`, Astro.site).href;
+const og = image
+  ? { ...(await getImage({ src: image, width: 1200, height: 630, format: 'jpg', fit: 'cover' })), alt: imageAlt ?? title }
+  : undefined;
+---
+<BaseLayout
+  title={title}
+  description={summary}
+  type="article"
+  publishedTime={date.toISOString()}
+  ogImage={og ? { src: og.src, width: 1200, height: 630, alt: og.alt } : undefined}
+>
+  <article class="press-article theme-light">
+    <header class="press-article__head">
+      <div class="container container--narrow">
+        <p class="press-article__back"><a href="/communiques-de-presse/" class="link-arrow link-arrow--back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Tous les communiqués</a></p>
+        <p class="eyebrow">Communiqué de presse</p>
+        <h1>{title}</h1>
+        <p class="press-article__meta">
+          {location && <span>{location}</span>}
+          {location && <span aria-hidden="true">·</span>}
+          <time datetime={isoDate(date)}>{formatDate(date)}</time>
+        </p>
+        <p class="lead">{summary}</p>
+      </div>
+    </header>
+
+    {image && (
+      <div class="container container--narrow">
+        <figure class="press-article__figure frame">
+          <Image src={image} alt={imageAlt ?? ''} widths={[720, 1200, 1800]} sizes="(min-width: 64em) 60rem, 100vw" layout="none" loading="eager" />
+        </figure>
+      </div>
+    )}
+
+    <div class="container container--narrow press-article__body">
+      <div class="prose">
+        <Content />
+      </div>
+
+      <aside class="press-article__aside" aria-label="Ressources et partage">
+        {pdf && (
+          <a href={pdf} class="btn btn--dark" download>
+            Télécharger le communiqué (PDF)
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4v12M7 11l5 5 5-5M5 20h14"/></svg>
+          </a>
+        )}
+        <div class="permalink">
+          <label for="permalink" class="small">Lien permanent</label>
+          <div class="permalink__row">
+            <input id="permalink" type="url" readonly value={permalink} />
+            <button type="button" class="permalink__copy" data-copy={permalink}>Copier</button>
+          </div>
+          <p class="small subtle" data-copy-status role="status" aria-live="polite"></p>
+        </div>
+      </aside>
+    </div>
+  </article>
+</BaseLayout>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('[data-copy]');
+  const status = document.querySelector<HTMLElement>('[data-copy-status]');
+  btn?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(btn.dataset.copy ?? '');
+      status && (status.textContent = 'Lien copié.');
+    } catch {
+      status && (status.textContent = 'Copie impossible : sélectionnez le lien ci-dessus.');
+    }
+  });
+</script>
+
+<style>
+  .press-article { background: var(--frost); }
+  .press-article__head { padding-block: clamp(3rem, 7vw, 6rem) clamp(2rem, 4vw, 3rem); }
+  .press-article__head .container { display: grid; gap: 1.1rem; }
+  .press-article__back { margin-bottom: 1rem; }
+  .press-article h1 { font-size: var(--h2); max-width: 22ch; }
+  .press-article__meta { display: flex; flex-wrap: wrap; gap: 0.6rem; color: var(--fg-subtle); font-weight: 600; }
+  .press-article__figure { aspect-ratio: 16 / 9; margin: 0 0 clamp(2rem, 4vw, 3rem); }
+  .press-article__figure :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .press-article__body { padding-bottom: var(--section); display: grid; gap: 3rem; }
+  .press-article__aside { display: grid; gap: 1.5rem; justify-items: start; padding-top: 2rem; border-top: 1px solid var(--line); max-width: var(--measure); }
+  .permalink { display: grid; gap: 0.4rem; width: 100%; }
+  .permalink label { font-weight: 700; }
+  .permalink__row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .permalink__row input {
+    flex: 1 1 16rem;
+    min-height: 2.9rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: 12px;
+    border: 1px solid var(--line-strong);
+    background: var(--white);
+    color: var(--fg);
+    font-size: var(--text-sm);
+  }
+  .permalink__copy {
+    min-height: 2.9rem;
+    padding: 0.6rem 1.1rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--line-strong);
+    background: var(--white);
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .permalink__copy:hover { border-color: var(--teal-ink); color: var(--teal-ink); }
+  .link-arrow--back:hover svg { transform: translateX(-4px); }
+</style>
