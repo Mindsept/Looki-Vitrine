@@ -420,6 +420,9 @@ const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
           <li>Associations, distributeurs spécialisés et partenaires</li>
           <li>Personnes concernées et proches curieux du projet</li>
         </ul>
+        <p class="contact__mail">
+          Écrire directement : <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+        </p>
         <p class="small subtle">{site.team}</p>
       </div>
       <div class="contact__panel" data-reveal style="--reveal-delay: 120ms">
@@ -637,6 +640,8 @@ const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
   .contact__text { display: grid; gap: 1.25rem; }
   .contact__who { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.5rem; color: var(--fg-muted); }
   .contact__who li::marker { color: var(--teal-ink); }
+  .contact__mail { font-weight: 600; }
+  .contact__mail a { color: var(--accent); text-underline-offset: 0.25em; }
   .contact__panel {
     padding: clamp(1.5rem, 3vw, 2.5rem);
     border-radius: var(--radius-xl);

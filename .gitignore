@@ -21,7 +21,7 @@ yarn-error.log*
 .eslintcache
 
 # Outils et éditeurs
-.claude/settings.local.json
+.claude/
 .vscode/*
 !.vscode/extensions.json
 .idea/

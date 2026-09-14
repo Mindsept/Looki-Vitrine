@@ -23,6 +23,7 @@ const year = new Date().getFullYear();
       </ul>
     </nav>
     <div class="site-footer__meta">
+      <p class="small"><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></p>
       <p class="small">{site.team}</p>
       <p class="small subtle">© {year} {site.name}. Tous droits réservés.</p>
     </div>
@@ -60,5 +61,6 @@ const year = new Date().getFullYear();
   .site-footer__nav a { text-decoration: none; color: rgba(238, 245, 250, 0.85); font-weight: 600; }
   .site-footer__nav a:hover { color: #fff; text-decoration: underline; text-decoration-color: var(--teal); }
   .site-footer__meta { display: grid; gap: 0.5rem; align-content: end; }
+  .site-footer__meta a { color: #fff; font-weight: 600; text-decoration-color: var(--teal); }
   @media (min-width: 52em) { .site-footer__meta { text-align: right; } }
 </style>

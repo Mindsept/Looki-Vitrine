@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PressCard from '@/components/PressCard.astro';
+import { site } from '@/lib/site';
 import caustics from '@/assets/images/11-caustics-dark.png';
 
 const entries = (await getCollection('communiques', ({ data }) => !data.draft)).sort(
@@ -45,7 +46,8 @@ const byYear = years.map((y) => ({ year: y, items: entries.filter((e) => e.data.
             Chaque communiqué disposera d’un lien permanent, d’un résumé et, le cas échéant, d’un dossier PDF à télécharger.
           </p>
           <p class="muted">
-            Pour une demande presse ou un échange sur le projet, utilisez la page contact.
+            Pour une demande presse ou un échange sur le projet, utilisez la page contact ou écrivez à
+            <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>.
           </p>
           <a href="/#contact" class="btn btn--dark">Contacter l’équipe
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -98,6 +100,7 @@ const byYear = years.map((y) => ({ year: y, items: entries.filter((e) => e.data.
   }
   .empty__mark { width: 3.5rem; color: var(--teal-ink); opacity: 0.9; }
   .empty h2 { font-size: var(--h3); }
+  .empty a { color: var(--accent); font-weight: 600; }
   .empty .btn { margin-top: 0.75rem; }
 
   .press-list__count { margin-bottom: 1rem; }

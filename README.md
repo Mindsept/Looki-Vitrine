@@ -78,6 +78,13 @@ contrastes AA sur fonds sombres et clairs, rendu complet sans JavaScript.
 ## À configurer avant la mise en ligne
 
 1. **Domaine** : variable d'environnement `SITE_URL` (ou `site` dans `astro.config.mjs`) pour les balises canonical, Open Graph et les liens permanents des communiqués.
-2. **Formulaire de contact** : aucune adresse n'ayant été fournie, l'envoi est désactivé et signalé sur la page. Renseigner `site.contact.endpoint` dans `src/lib/site.ts` avec l'URL d'un service acceptant un `POST` (Formspree, Netlify Forms, fonction serverless…).
+2. **Formulaire de contact** : les demandes arrivent sur **mind7.sigl@outlook.fr** (`site.contact.email`).
+   Le site étant statique, il n'a pas de serveur qui envoie l'e-mail : le formulaire prépare le message
+   dans la messagerie du visiteur, déjà adressé à cette boîte, objet et corps remplis ; le visiteur
+   l'envoie depuis sa messagerie. L'adresse est aussi affichée en clair (contact, pied de page, espace presse),
+   donc le lien reste utilisable sans JavaScript.
+   *Optionnel* : pour un envoi silencieux, sans quitter la page, créez un compte chez un service de
+   formulaire (Formspree, Web3Forms, Netlify Forms…) configuré pour transmettre à cette adresse, puis collez
+   l'URL reçue dans `site.contact.endpoint` (`src/lib/site.ts`). Le formulaire bascule automatiquement de mode.
 3. **Mentions légales** : à ajouter au pied de page une fois l'entité et l'adresse connues.
 4. **Hébergement** : `npm run build` produit un site statique déployable sur n'importe quel hébergeur.

@@ -11,16 +11,22 @@ export const site = {
   /** Porteur du projet, tel que documenté dans les supports de cadrage. */
   team: 'Équipe Mind7 · EPITA, SIGL 2027',
   /**
-   * Formulaire de contact.
-   * Aucune adresse e-mail ni service d'envoi n'a été fourni : tant que `endpoint`
-   * est vide, le formulaire affiche un message explicite et n'envoie rien.
-   * Pour l'activer : renseigner l'URL d'un service qui accepte un POST
-   * (ex. Formspree, Netlify Forms, une fonction serverless maison) — voir README.md.
+   * Formulaire de contact. Le site étant statique, il n'a pas de serveur qui
+   * puisse envoyer un e-mail : deux modes sont prévus.
+   *
+   *  - `endpoint` vide (cas actuel) : le formulaire prépare le message dans la
+   *    messagerie du visiteur, déjà adressé à `email`, objet et corps remplis.
+   *    Le visiteur l'envoie depuis sa messagerie ; rien n'est simulé.
+   *  - `endpoint` renseigné : le message est envoyé en arrière-plan à ce service,
+   *    qui le transmet à `email` sans que le visiteur quitte la page
+   *    (Formspree, Web3Forms, Netlify Forms, fonction serverless…). Voir README.md.
    */
   contact: {
+    /** Boîte de réception de l'équipe : toutes les demandes y arrivent. */
+    email: 'mind7.sigl@outlook.fr',
     endpoint: '',
-    /** Adresse affichée publiquement (facultatif). Laisser vide si non validée. */
-    email: '',
+    /** Objet pré-rempli des messages. */
+    subject: 'Contact via le site LOOKi',
   },
 } as const;
 
