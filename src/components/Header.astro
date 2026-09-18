@@ -59,7 +59,7 @@ const isCurrent = (href: string) => {
       toggle?.focus();
     }
   });
-  const mq = window.matchMedia('(min-width: 72em)');
+  const mq = window.matchMedia('(min-width: 84em)');
   mq.addEventListener('change', (e) => e.matches && setOpen(false));
 
   // Voile plus dense une fois la page défilée
@@ -140,7 +140,7 @@ const isCurrent = (href: string) => {
   .is-open .burger i:first-child { transform: rotate(45deg); }
   .is-open .burger i:last-child { transform: rotate(-45deg); }
 
-  @media (max-width: 71.99em) {
+  @media (max-width: 83.99em) {
     .site-header__toggle { display: block; }
     .site-nav {
       position: absolute;

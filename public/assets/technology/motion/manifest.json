@@ -1,0 +1,10 @@
+{
+  "fps": 96,
+  "frameCount": 425,
+  "sourceFps": 24,
+  "sourceFrameCount": 107,
+  "interpolation": "RIFE 4.26, hq, quarter timesteps",
+  "tooling": "rife-metal v0.1.6",
+  "desktopWidth": 1440,
+  "mobileWidth": 900
+}

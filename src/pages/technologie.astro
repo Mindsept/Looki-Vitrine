@@ -1,0 +1,14 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TechnologyExperience from '@/components/react/TechnologyExperience';
+import { getImage } from 'astro:assets';
+import parcours from '@/assets/images/23-looki-parcours-accompagne.png';
+const [desktop, mobile] = await Promise.all([
+  getImage({ src: parcours, width: 1672, format: 'webp', quality: 82 }),
+  getImage({ src: parcours, width: 900, format: 'webp', quality: 80 }),
+]);
+---
+<BaseLayout title="La technologie LOOKi" description="Du regard au cloud : découvrez les principes technologiques de LOOKi, un projet de lunettes connectées en développement." bodyClass="technology-page">
+  <TechnologyExperience client:load outroBackground={{ desktop: desktop.src, mobile: mobile.src }} />
+  <noscript><style>.technology-controls { display: none !important; }</style></noscript>
+</BaseLayout>

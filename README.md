@@ -38,9 +38,12 @@ Prérequis : Node.js ≥ 22.12.
 | Route | Contenu |
 |---|---|
 | `/` | Accueil : héro, La solution, Au quotidien, constat, Pour les professionnels, Vision, aperçu presse, Contact |
+| `/technologie/` | Exploration des technologies LOOKi pilotée par le scroll, avec arrêts par chapitre |
 | `/communiques-de-presse/` | Liste des communiqués (état vide élégant tant qu'aucun n'est publié) |
 | `/communiques-de-presse/<slug>/` | Page permanente d'un communiqué (résumé, image, PDF, lien permanent) |
 | `/404` | Page introuvable |
+
+La page technologique, ses médias et les réglages de synchronisation sont documentés dans [README-TECHNOLOGIE.md](README-TECHNOLOGIE.md).
 
 ## Organisation
 

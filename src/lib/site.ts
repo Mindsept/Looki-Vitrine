@@ -35,6 +35,7 @@ export type NavItem = { label: string; href: string; id?: string };
 /** Navigation principale. Les ancres pointent vers l'accueil. */
 export const nav: NavItem[] = [
   { label: 'La solution', href: '/#solution', id: 'solution' },
+  { label: 'La technologie', href: '/technologie/' },
   { label: 'Au quotidien', href: '/#quotidien', id: 'quotidien' },
   { label: 'Pour les professionnels', href: '/#professionnels', id: 'professionnels' },
   { label: 'Communiqués de presse', href: '/communiques-de-presse/' },

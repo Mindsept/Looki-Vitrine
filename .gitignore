@@ -33,3 +33,9 @@ Thumbs.db
 # Captures et fichiers temporaires
 *.tmp
 *.swp
+
+# Préparation locale des médias technologiques
+.media-tools/
+.motion-frames/
+.technology-frames/
+qa/interpolation-progress.txt

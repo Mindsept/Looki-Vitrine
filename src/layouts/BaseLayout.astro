@@ -9,6 +9,7 @@ import { site } from '@/lib/site';
 import ogSource from '@/assets/images/26-logo-liquid-glass.png';
 
 interface Props {
+  bodyClass?: string;
   title: string;
   description?: string;
   /** Type Open Graph : `website` par défaut, `article` pour un communiqué. */
@@ -18,6 +19,7 @@ interface Props {
 }
 
 const {
+  bodyClass,
   title,
   description = site.description,
   type = 'website',
@@ -71,7 +73,7 @@ const ogUrl = new URL(og.src, Astro.site);
       document.documentElement.classList.add('js');
     </script>
   </head>
-  <body>
+  <body class={bodyClass}>
     <a href="#contenu" class="skip-link">Aller au contenu</a>
     <Header />
     <main id="contenu" tabindex="-1">
