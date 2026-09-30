@@ -2,14 +2,13 @@
 import { Image, getImage } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import SplitReveal from '@/components/react/SplitReveal';
-import Lightfall from '@/components/react/Lightfall';
 import GlassTilt from '@/components/react/GlassTilt';
 import RippleDistortion from '@/components/react/RippleDistortion';
 import VoiceChip from '@/components/VoiceChip.astro';
 import PressCard from '@/components/PressCard.astro';
 import ContactForm from '@/components/ContactForm.astro';
 import { site } from '@/lib/site';
+import productVideo from '../../assets/video/looki-presentation-720p.mov';
 
 import mobilite from '@/assets/images/21-looki-mobilite-urbaine.png';
 import reperage from '@/assets/images/22-looki-reperage-entree.png';
@@ -17,7 +16,6 @@ import parcours from '@/assets/images/23-looki-parcours-accompagne.png';
 import priseEnMain from '@/assets/images/24-looki-prise-en-main.png';
 import suiviCentre from '@/assets/images/25-looki-suivi-centre.png';
 import heroGlass from '@/assets/images/01-hero-dark.png';
-import opticalMacro from '@/assets/images/05-optical-macro.png';
 import wave from '@/assets/images/03-liquid-wave.png';
 import causticsLight from '@/assets/images/12-caustics-light.png';
 import logoGlass from '@/assets/images/26-logo-liquid-glass.png';
@@ -26,81 +24,64 @@ const communiques = (await getCollection('communiques', ({ data }) => !data.draf
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 2);
 
-// Textures pour l'ondulation au pointeur : mêmes recadrages que les images servies.
-const heroRipple = await getImage({ src: opticalMacro, width: 1200, height: 1350, fit: 'cover', position: 'left', format: 'webp', quality: 85 });
+// Texture pour l'ondulation au pointeur sur le logo en verre.
 const logoRipple = await getImage({ src: logoGlass, width: 1600, format: 'webp', quality: 85 });
 
 const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`;
 ---
 <BaseLayout title={site.name}>
-  <noscript>
-    <style>
-      .split-reveal__word { transform: none !important; opacity: 1 !important; filter: none !important; }
-    </style>
-  </noscript>
-
   <!-- ===================================================== HERO -->
   <section class="hero" aria-labelledby="hero-title">
+    <video
+      class="hero__video"
+      src={productVideo}
+      poster={heroGlass.src}
+      muted
+      playsinline
+      preload="auto"
+      aria-hidden="true"
+      tabindex="-1"
+      data-hero-video
+    ></video>
     <div class="glow" aria-hidden="true"></div>
-    <Lightfall client:idle />
     <div class="hero__veil" aria-hidden="true"></div>
     <div class="container hero__grid">
       <div class="hero__text">
-        <p class="eyebrow" data-reveal>Lunettes connectées · assistance vocale · suivi professionnel</p>
-        <SplitReveal
-          client:load
-          as="h1"
-          id="hero-title"
-          lines={['Plus de repères en chemin.', 'Plus de confiance, chaque jour.']}
-          delay={120}
-          stagger={80}
-        />
-        <SplitReveal
-          client:load
-          as="p"
-          className="lead hero__lead"
-          mode="blur"
-          lines={['Des lunettes connectées pensées pour accompagner les personnes malvoyantes dans leurs déplacements, et prolonger le suivi des professionnels entre deux séances.']}
-          delay={700}
-          stagger={28}
-          duration={0.7}
-        />
-        <div class="hero__actions" data-reveal style="--reveal-delay: 900ms">
+        <p class="eyebrow">Lunettes connectées · assistance vocale · suivi professionnel</p>
+        <h1 id="hero-title">Plus de repères en chemin.<br />Plus de confiance, chaque jour.</h1>
+        <div class="hero__actions">
           <a href="#contact" class="btn">Échanger sur le projet <Fragment set:html={arrow} /></a>
           <a href="/technologie/" class="btn btn--ghost">Explorer la technologie</a>
         </div>
       </div>
 
-      <div class="hero__visual" data-reveal="scale" style="--reveal-delay: 350ms">
-        <GlassTilt client:visible amplitude={3} radius="32px">
-          <figure class="hero__figure frame">
-            <RippleDistortion client:visible src={heroRipple.src} quality="medium">
-            <Image
-              src={opticalMacro}
-              alt="Gros plan sur la tranche courbe d’un verre optique cerclé de métal bleu nuit, avec un reflet turquoise et des halos de lumière."
-              width={960}
-              height={1080}
-              fit="cover"
-              position="left"
-              widths={[480, 720, 960]}
-              sizes="(min-width: 60em) 40vw, 92vw"
-              layout="none"
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-            />
-            </RippleDistortion>
-          </figure>
-        </GlassTilt>
-      </div>
     </div>
 
-    <div class="container hero__facts" data-reveal style="--reveal-delay: 1100ms">
+    <div class="container hero__facts">
       <ul>
         <li><strong>Projet en développement</strong><span>Prototype et pilotes à venir, aucune commercialisation à ce jour</span></li>
         <li><strong>Une aide complémentaire</strong><span>Aux côtés de la canne, du chien guide et de l’accompagnement humain</span></li>
         <li><strong>Pensé avec le terrain</strong><span>Pour les centres de rééducation et les structures médico-sociales</span></li>
       </ul>
+    </div>
+  </section>
+
+  <!-- ===================================================== FILM DU PROJET -->
+  <section class="section product-film theme-light" aria-labelledby="product-film-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Le projet en images</p>
+        <h2 id="product-film-title">Découvrez LOOKi en mouvement.</h2>
+        <p class="lead">La vidéo complète présente notre projet. Lancez la lecture pour profiter aussi du son.</p>
+      </div>
+      <video
+        class="product-film__video"
+        src={productVideo}
+        controls
+        playsinline
+        preload="metadata"
+        aria-label="Vidéo complète de présentation du projet LOOKi, avec son."
+      ></video>
     </div>
   </section>
 
@@ -432,6 +413,42 @@ const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
   </section>
 </BaseLayout>
 
+<script>
+  const heroVideo = document.querySelector<HTMLVideoElement>('[data-hero-video]');
+  const segmentStart = 18;
+
+  if (heroVideo) {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const startHeroVideo = () => {
+      if (reducedMotion.matches) return;
+
+      heroVideo.currentTime = heroVideo.duration > segmentStart ? segmentStart : 0;
+      void heroVideo.play().catch(() => {});
+    };
+
+    if (heroVideo.readyState >= HTMLMediaElement.HAVE_METADATA) {
+      startHeroVideo();
+    } else {
+      heroVideo.addEventListener('loadedmetadata', startHeroVideo, { once: true });
+    }
+
+    heroVideo.addEventListener('ended', () => {
+      if (reducedMotion.matches) return;
+
+      heroVideo.currentTime = heroVideo.duration > segmentStart ? segmentStart : 0;
+      void heroVideo.play().catch(() => {});
+    });
+
+    reducedMotion.addEventListener('change', (event) => {
+      if (event.matches) {
+        heroVideo.pause();
+      } else if (heroVideo.paused) {
+        startHeroVideo();
+      }
+    });
+  }
+</script>
+
 <style>
   /* ---------------------------------------------------------------- Hero */
   .hero {
@@ -444,31 +461,48 @@ const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
       var(--navy-950);
     color: #eef5fa;
   }
+  .hero__video {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+    pointer-events: none;
+  }
   .hero .glow { z-index: -1; }
-  .hero :global(.lightfall) { z-index: -1; }
   .hero__veil {
     position: absolute; inset: 0; z-index: -1; pointer-events: none;
     background:
       linear-gradient(90deg, rgba(6, 20, 38, 0.72) 0%, rgba(6, 20, 38, 0.45) 38%, rgba(6, 20, 38, 0.05) 62%),
       linear-gradient(180deg, rgba(6, 20, 38, 0.35) 0%, transparent 25%, transparent 70%, var(--navy-950) 100%);
   }
+  .hero__veil::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(3, 14, 29, 0.14);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    mask-image: linear-gradient(90deg, #000 0%, #000 32%, transparent 66%);
+    -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 32%, transparent 66%);
+  }
+  @media (max-width: 59.99em) {
+    .hero__veil::before {
+      mask-image: linear-gradient(90deg, #000 0%, #000 36%, transparent 82%);
+      -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 36%, transparent 82%);
+    }
+  }
   .hero__grid {
     display: grid;
-    gap: clamp(2.5rem, 5vw, 4rem);
     align-items: center;
     min-height: min(78vh, 56rem);
   }
-  @media (min-width: 60em) {
-    .hero__grid { grid-template-columns: 7fr 5fr; gap: clamp(2rem, 6vw, 6rem); }
-  }
-  .hero__text { display: grid; gap: clamp(1.25rem, 2.5vw, 2rem); justify-items: start; }
+  .hero__text { display: grid; gap: clamp(1.25rem, 2.5vw, 2rem); justify-items: start; max-width: 58rem; }
   .hero__text h1 { max-width: 12ch; }
-  .hero__lead { max-width: 36rem; }
   .hero__actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
-
-  .hero__visual { position: relative; }
-  .hero__figure { aspect-ratio: 8 / 9; max-width: 34rem; margin: 0; margin-inline: auto; }
-  .hero__figure :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: left center; }
 
   .hero__facts { margin-top: clamp(3rem, 6vw, 5rem); }
   .hero__facts ul {
@@ -482,6 +516,21 @@ const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
   @media (min-width: 48em) { .hero__facts ul { grid-template-columns: repeat(3, 1fr); } }
   .hero__facts li { display: grid; gap: 0.25rem; font-size: var(--text-sm); color: var(--fg-muted); }
   .hero__facts strong { color: #fff; font-family: var(--font-display); font-size: 1.05rem; letter-spacing: -0.01em; }
+
+  /* ---------------------------------------------------------------- Vidéo complète */
+  .product-film { background: var(--frost); }
+  .product-film__video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    border-radius: var(--radius-xl);
+    background: #000;
+    box-shadow: 0 24px 70px -34px rgba(3, 29, 59, 0.48);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__video { display: none; }
+  }
 
   /* ---------------------------------------------------------------- Solution */
   .solution {
