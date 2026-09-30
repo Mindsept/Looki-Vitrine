@@ -18,13 +18,13 @@ import heroGlass from '@/assets/images/01-hero-dark.png';
 import wave from '@/assets/images/03-liquid-wave.png';
 import causticsLight from '@/assets/images/12-caustics-light.png';
 import logoGlass from '@/assets/images/26-logo-liquid-glass.png';
+import productVideo from '../../assets/video/looki-presentation-720p.mov';
 
 const communiques = (await getCollection('communiques', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 2);
 
 const youtubeVideoId = 'T4ThXVXH6qs';
-const heroVideoEmbedUrl = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&controls=0&disablekb=1&playsinline=1&rel=0&start=18&end=74&loop=1&playlist=${youtubeVideoId}`;
 const fullVideoEmbedUrl = `https://www.youtube.com/embed/${youtubeVideoId}?playsinline=1&rel=0`;
 
 // Texture pour l'ondulation au pointeur sur le logo en verre.
@@ -35,21 +35,17 @@ const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
 <BaseLayout title={site.name}>
   <!-- ===================================================== HERO -->
   <section class="hero" aria-labelledby="hero-title">
-    <div
+    <video
       class="hero__video"
-      style={`--hero-poster: url("${heroGlass.src}")`}
+      src={productVideo}
+      poster={heroGlass.src}
+      muted
+      playsinline
+      preload="auto"
       aria-hidden="true"
+      tabindex="-1"
       data-hero-video
-      data-embed-url={heroVideoEmbedUrl}
-    >
-      <iframe
-        title="Vidéo LOOKi en arrière-plan"
-        src="about:blank"
-        allow="autoplay; encrypted-media"
-        referrerpolicy="strict-origin-when-cross-origin"
-        tabindex="-1"
-      ></iframe>
-    </div>
+    ></video>
     <div class="glow" aria-hidden="true"></div>
     <div class="hero__veil" aria-hidden="true"></div>
     <div class="container hero__grid">
@@ -423,19 +419,30 @@ const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
 </BaseLayout>
 
 <script>
-  const heroVideo = document.querySelector<HTMLElement>('[data-hero-video]');
-  const heroFrame = heroVideo?.querySelector<HTMLIFrameElement>('iframe');
+  const heroVideo = document.querySelector<HTMLVideoElement>('[data-hero-video]');
 
-  if (heroVideo && heroFrame) {
+  if (heroVideo) {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const embedUrl = heroVideo.dataset.embedUrl;
-    const syncHeroVideo = (shouldPlay: boolean) => {
-      if (!embedUrl) return;
-      heroFrame.src = shouldPlay ? embedUrl : 'about:blank';
+    const segmentStart = 18;
+    const startHeroVideo = () => {
+      if (reducedMotion.matches) return;
+      heroVideo.currentTime = heroVideo.duration > segmentStart ? segmentStart : 0;
+      void heroVideo.play().catch(() => {});
     };
 
-    syncHeroVideo(!reducedMotion.matches);
-    reducedMotion.addEventListener('change', (event) => syncHeroVideo(!event.matches));
+    if (heroVideo.readyState >= HTMLMediaElement.HAVE_METADATA) startHeroVideo();
+    else heroVideo.addEventListener('loadedmetadata', startHeroVideo, { once: true });
+
+    heroVideo.addEventListener('ended', () => {
+      if (reducedMotion.matches) return;
+      heroVideo.currentTime = heroVideo.duration > segmentStart ? segmentStart : 0;
+      void heroVideo.play().catch(() => {});
+    });
+
+    reducedMotion.addEventListener('change', (event) => {
+      if (event.matches) heroVideo.pause();
+      else if (heroVideo.paused) startHeroVideo();
+    });
   }
 </script>
 
@@ -455,18 +462,12 @@ const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
     position: absolute;
     inset: 0;
     z-index: -2;
-    overflow: hidden;
-    background: var(--navy-950) var(--hero-poster) center / cover no-repeat;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
     pointer-events: none;
-  }
-  .hero__video iframe {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: max(100vw, 177.78vh);
-    height: max(100vh, 56.25vw);
-    border: 0;
-    transform: translate(-50%, -50%);
   }
   .hero .glow { z-index: -1; }
   .hero__veil {
@@ -533,7 +534,7 @@ const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero__video iframe { display: none; }
+    .hero__video { display: none; }
   }
 
   /* ---------------------------------------------------------------- Solution */
