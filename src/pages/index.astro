@@ -19,13 +19,11 @@ import wave from '@/assets/images/03-liquid-wave.png';
 import causticsLight from '@/assets/images/12-caustics-light.png';
 import logoGlass from '@/assets/images/26-logo-liquid-glass.png';
 import productVideo from '../../assets/video/looki-presentation-720p.mov';
+import heroLoopVideo from '../../assets/video/looki-hero-loop-720p.mov';
 
 const communiques = (await getCollection('communiques', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 2);
-
-const youtubeVideoId = 'T4ThXVXH6qs';
-const fullVideoEmbedUrl = `https://www.youtube.com/embed/${youtubeVideoId}?playsinline=1&rel=0`;
 
 // Texture pour l'ondulation au pointeur sur le logo en verre.
 const logoRipple = await getImage({ src: logoGlass, width: 1600, format: 'webp', quality: 85 });
@@ -37,8 +35,9 @@ const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
   <section class="hero" aria-labelledby="hero-title">
     <video
       class="hero__video"
-      src={productVideo}
-      poster={heroGlass.src}
+      src={heroLoopVideo}
+      autoplay
+      loop
       muted
       playsinline
       preload="auto"
@@ -78,14 +77,13 @@ const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
         <p class="lead">La vidéo complète présente notre projet. Lancez la lecture pour profiter aussi du son.</p>
       </div>
       <div class="product-film__frame">
-        <iframe
-          src={fullVideoEmbedUrl}
+        <video
+          src={productVideo}
           title="Vidéo complète de présentation du projet LOOKi, avec son."
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
+          controls
+          playsinline
+          preload="metadata"
+        ></video>
       </div>
     </div>
   </section>
@@ -423,26 +421,13 @@ const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
 
   if (heroVideo) {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const segmentStart = 18;
-    const startHeroVideo = () => {
-      if (reducedMotion.matches) return;
-      heroVideo.currentTime = heroVideo.duration > segmentStart ? segmentStart : 0;
-      void heroVideo.play().catch(() => {});
+    const syncHeroPlayback = (shouldPlay: boolean) => {
+      if (shouldPlay) void heroVideo.play().catch(() => {});
+      else heroVideo.pause();
     };
 
-    if (heroVideo.readyState >= HTMLMediaElement.HAVE_METADATA) startHeroVideo();
-    else heroVideo.addEventListener('loadedmetadata', startHeroVideo, { once: true });
-
-    heroVideo.addEventListener('ended', () => {
-      if (reducedMotion.matches) return;
-      heroVideo.currentTime = heroVideo.duration > segmentStart ? segmentStart : 0;
-      void heroVideo.play().catch(() => {});
-    });
-
-    reducedMotion.addEventListener('change', (event) => {
-      if (event.matches) heroVideo.pause();
-      else if (heroVideo.paused) startHeroVideo();
-    });
+    syncHeroPlayback(!reducedMotion.matches);
+    reducedMotion.addEventListener('change', (event) => syncHeroPlayback(!event.matches));
   }
 </script>
 
@@ -525,7 +510,7 @@ const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
     box-shadow: 0 24px 70px -34px rgba(3, 29, 59, 0.48);
     overflow: hidden;
   }
-  .product-film__frame iframe {
+  .product-film__frame video {
     position: absolute;
     inset: 0;
     width: 100%;
